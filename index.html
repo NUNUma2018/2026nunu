@@ -641,6 +641,68 @@ body.ar .f-col h5 {font-size: 14px;}
     padding: 50px !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.08) !important;
 }
+/* ============================================================
+   🚨 手机端专属终极修复补丁 (Mobile Luxury Fix)
+   ============================================================ */
+@media (max-width: 768px) {
+    /* 1. 拯救全局呼吸感 */
+    section {
+        padding: 60px 0 !important;
+    }
+    .wrap {
+        padding: 0 20px !important;
+    }
+    .section-head {
+        font-size: 32px !important;
+    }
+
+    /* 2. 拯救服务模块：砍掉丑陋留白，恢复精致卡片 */
+    #services .wrap {
+        display: flex !important;
+        flex-direction: column !important; /* 强制上下排布 */
+        gap: 30px !important;
+    }
+    .service-block {
+        min-width: 100% !important;
+        height: auto !important; /* 解除高度锁定，消灭底部大白块 */
+    }
+    .service-img-wrap {
+        height: 250px !important; /* 手机端图片高度缩减，显得更紧凑 */
+    }
+    .service-text-wrap {
+        padding: 30px 20px !important;
+    }
+
+    /* 3. 拯救联系模块：告别挤压，恢复全宽奢华表单 */
+    .contact-grid {
+        display: flex !important;
+        flex-direction: column !important; /* 强制上下排布 */
+        gap: 40px !important;
+    }
+    .office-item {
+        margin-top: 20px !important;
+        padding-left: 15px !important;
+    }
+    .form-panel {
+        width: 100% !important;
+        padding: 40px 25px !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05) !important; /* 恢复柔和的高级阴影 */
+        border-radius: 4px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* 4. 优化手机端画廊 */
+    .gallery-grid {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .gallery-item, .gallery-item.wide {
+        flex: none !important;
+        width: 100% !important;
+        height: 350px !important;
+    }
+}
 </style>
 </head>
 <body>
