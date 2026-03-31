@@ -1,643 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>NAQI Gulf — Premium Building Materials & Furniture Supply</title>
-<meta name="description" content="Direct supply of luxury furniture, marble, lighting and building materials from China to Qatar, Saudi Arabia, and UAE.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NAQI Gulf — Premium Building Materials</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* 核心基础样式 */
+        :root { --gold: #C5A059; --black: #000; --white: #FFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Jost', sans-serif; background: #fff; color: #000; overflow-x: hidden; }
+        
+        /* 导航 */
+        #nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: #fff; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .brand-box { border: 1px solid #000; padding: 5px 15px; text-align: center; }
+        .brand-name { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; font-weight: 700; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+        /* 视频区 - 强制全屏 */
+        #hero { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; }
+        .hero-video { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.6); }
+        .hero-content { position: relative; z-index: 10; text-align: center; }
+        .hero-title { color: var(--gold); font-size: clamp(32px, 8vw, 64px); font-weight: 800; text-transform: uppercase; letter-spacing: 5px; }
 
-<link rel="icon" type="image/png" href="favicon.png">
+        /* 业务板块通用样式 */
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 30px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
 
-<link rel="apple-touch-icon" href="favicon.png">
-
-<style>
-  /* ═══════════════════════════════════════════
-   LUXURY TRUST BADGES — FOR contact-left (信任标签)
-═══════════════════════════════════════════ */
-.hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover; /* 关键：确保视频像电影一样铺满，不留白 */
-  z-index: -1; /* 确保视频在文字后面 */
-  filter: brightness(0.7); /* 稍微调暗，显得更高端，也能让白色文字更清晰 */
-}
-.luxury-trust-badges {
-  margin-top: 56px; /* 增加与引导文案的呼吸感 */
-  display: flex;
-  flex-direction: column;
-  gap: 32px; /* 标签之间的间距 */
-}
-@media(max-width: 1024px) { .luxury-trust-badges { margin-top: 40px; } }
-
-.trust-badge-item {
-  display: flex;
-  align-items: center; /* 图标与文字垂直居中 */
-  gap: 20px; /* 图标与文字的间距 */
-}
-body.ar .trust-badge-item { flex-direction: row-reverse; } /* 阿拉伯语下反转 */
-
-/* 图标容器 — 金色圆圈 */
-.badge-icon-wrap {
-  width: 54px; height: 54px;
-  background: var(--cream-dark); /* 浅灰底 */
-  border: 1px solid var(--beige); /* 边框增加精致感 */
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gold); /* 这里的金色是点睛之笔 */
-  transition: all 0.3s; flex-shrink: 0;
-}
-.trust-badge-item:hover .badge-icon-wrap {
-  border-color: var(--gold);
-   box-shadow: 0 8px 24px #c5a05926;
-}
-.badge-icon-wrap svg { width: 24px; height: 24px; fill: currentColor; } /* 图标大小 */
-
-/* 文字容器 */
-.badge-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-body.ar .badge-text { text-align: right; } /* 阿拉伯语下靠右 */
-
-/* 标题 — Jost 字体，高对比，更现代 */
-.badge-title {
-  font-family: var(--font-b); font-size: 14px; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase; color: var(--ink);
-}
-body.ar .badge-title { font-size: 16px; font-weight: 700; letter-spacing: 0; }
-
-/* 描述文字 — Tajawal 字体，优雅 */
-.badge-desc {
-  font-family: var(--font-a); font-size: 14px; font-weight: 400;
-  color: var(--ink-soft); line-height: 1.6;
-}
-  /* 高级电话列表对齐样式 */
-.contact-list-align { display: flex; flex-direction: column; gap: 14px; }
-.contact-list-align li { display: flex; align-items: center; }
-.c-prefix {
-  color: var(--stone); font-size: 10px; font-weight: 700; 
-  letter-spacing: 2px; text-transform: uppercase; 
-  width: 75px; flex-shrink: 0;
-}
-body.ar .c-prefix { width: 55px; letter-spacing: 0; }
-/* ═══════════════════════════════════════════
-   TOKENS (极致高对比色彩)
-═══════════════════════════════════════════ */
-:root{
-  --cream:      #F9F9F9; 
-  --cream-dark: #F0F0F0;
-  --beige:      #E5E5E5;
-  --stone:      #888888;
-  --gold:       #C5A059;
-  --gold-light: #D9BB7B;
-  --ink:        #000000; 
-  --ink-mid:    #222222;
-  --ink-soft:   #333333; 
-  --white:      #FFFFFF;
-  --nav-bg:     #FFFFFF;
-  --font-d:     'Playfair Display', serif;
-  --font-b:     'Jost', sans-serif;
-  --font-a:     'Tajawal', sans-serif; 
-  --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --t:          0.4s;
-}
-
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{
-  font-family:var(--font-b); background:var(--white); color:var(--ink);
-  overflow-x:hidden; line-height:1.7; font-weight:400;
-}
-img{max-width:100%;height:auto;display:block;}
-a{text-decoration:none;color:inherit;}
-button{cursor:pointer;border:none;background:none;font-family:inherit;line-height:1;outline:none;}
-ul{list-style:none;}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-track{background:var(--cream);}
-::-webkit-scrollbar-thumb{background:var(--gold);}
-
-/* ═══════════════════════════════════════════
-   阿拉伯语绝对防断裂 & 超清排版优化
-═══════════════════════════════════════════ */
-body.ar { direction: rtl; text-align: right; }
-body.ar, body.ar * { font-family: var(--font-a) !important; letter-spacing: 0 !important; }
-body.ar .body-text { font-size: 18px !important; line-height: 1.8; }
-body.ar .service-desc { font-size: 17px !important; line-height: 1.8; }
-body.ar .nav-links a.main-link { font-size: 14px !important; font-weight: 500; }
-body.ar .dropdown-item { font-size: 14px !important; font-weight: 500; }
-
-.phone-num, .kpi-num, .trust-num, .budget-num {white-space: nowrap !important;
-  direction: ltr !important; unicode-bidi: isolate !important;
-  display: inline-block; font-family: var(--font-b) !important; text-align: left;
-}
-input[type="tel"] { direction: ltr !important; text-align: left !important; unicode-bidi: plaintext; font-family: var(--font-b) !important; }
-
-/* ═══════════════════════════════════════════
-   CONTAINER & TYPOGRAPHY
-═══════════════════════════════════════════ */
-.wrap{width:100%;max-width:1400px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.wrap{padding:0 24px;}}
-
-.eyebrow{ display:block; font-family:var(--font-b); font-size:12px;font-weight:600; letter-spacing:3px;text-transform:uppercase; color:var(--gold);margin-bottom:16px; }
-.display-title{ font-family:var(--font-d); font-size:clamp(40px,6vw,84px); font-weight:400;line-height:1.1; color:var(--ink); }
-body.ar .display-title{line-height:1.3; font-weight:700;}
-.display-title em, .section-head em {font-style:italic;color:var(--gold);}
-.section-head{ font-family:var(--font-d); font-size:clamp(32px,5vw,62px); font-weight:400;line-height:1.2; color:var(--ink); }
-body.ar .section-head{line-height:1.4; font-weight:700;}
-.body-text{ font-size:16px;font-weight:400; line-height:1.8;color:var(--ink-soft); max-width:600px; }
-
-.g-line{ display:flex;align-items:center;gap:12px; margin:28px 0; }
-.g-line::before,.g-line::after{ content:'';flex:1;height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
-.g-line i{ width:4px;height:4px; background:var(--gold); transform:rotate(45deg);flex-shrink:0; display:block; }
-
-/* ═══════════════════════════════════════════
-   BUTTONS
-═══════════════════════════════════════════ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--font-b);font-size:12px;font-weight:600; letter-spacing:2px;text-transform:uppercase;
-  padding:18px 44px;white-space:nowrap; transition:all var(--t) var(--ease); border-radius:2px;
-}
-body.ar .btn{font-size:14px; flex-direction:row-reverse;}
-.btn-dark{background:var(--ink);color:var(--white);}
-.btn-dark:hover{background:var(--ink-soft);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.2);}
-.btn-outline{border:1px solid var(--beige);color:var(--ink);}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-
-/* ═══════════════════════════════════════════
-   TOP NAV (修复手机端重叠 + 增加电脑端下拉)
-═══════════════════════════════════════════ */
-#nav{ position:fixed;top:0;left:0;right:0;z-index:500; padding:20px 0; transition:all 0.4s ease; background: var(--nav-bg); }
-#nav.scrolled{
-  background:rgba(255,255,255,0.98); padding:12px 0; border-bottom:1px solid rgba(197,160,89,0.15); box-shadow:0 5px 30px rgba(0,0,0,0.05);
-}
-.nav-inner{ display:flex;align-items:center; justify-content:space-between;gap:16px; }
-
-.nav-brand{cursor:pointer;display:flex;flex-direction:column;gap:2px; align-items:center;}
-.brand-name{
-  font-family:var(--font-d); font-size:24px;font-weight:500; letter-spacing:5px;text-transform:uppercase; color:var(--ink);line-height:1;
-  border:1px solid var(--ink); padding:8px 16px;
-}
-.brand-sub{ font-size:9px;font-weight:600;letter-spacing:3px; text-transform:uppercase;color:var(--ink-soft); padding-top:4px; }
-@media(max-width:768px){ .brand-name{font-size:18px;letter-spacing:3px;} .brand-sub{font-size:7px;letter-spacing:2px;} }
-
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-item{position:relative; padding:10px 0;}
-.nav-links a.main-link{
-  font-size:12px;font-weight:600;letter-spacing:1px; text-transform:uppercase;color:var(--ink); transition:color 0.3s;
-  display:flex; align-items:center; gap:4px;
-}
-.nav-links a.main-link:hover{color:var(--gold);}
-body.ar .nav-links a.main-link {flex-direction: row-reverse;}
-
-.dropdown-menu{
-  position:absolute; top:100%; left:-10px; background:var(--white); min-width:200px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.1); border:1px solid var(--beige);
-  opacity:0; visibility:hidden; transform:translateY(10px); transition:all 0.3s var(--ease); display:flex; flex-direction:column;
-  padding:12px 0; border-radius:2px;
-}
-body.ar .dropdown-menu{left:auto; right:-10px;}
-.nav-item:hover .dropdown-menu{ opacity:1; visibility:visible; transform:translateY(0); }
-.dropdown-item{
-  padding:10px 20px; font-size:13px; font-weight:500; color:var(--ink-soft);
-  transition:all 0.2s; display:block; letter-spacing:1px;
-}
-.dropdown-item:hover{ background:var(--cream); color:var(--gold); padding-left:24px;}
-body.ar .dropdown-item{text-align: right;}
-body.ar .dropdown-item:hover{padding-left:20px; padding-right:24px;}
-
-.nav-right{display:flex;align-items:center;gap:12px;}
-.lang-group{display:flex;align-items:center;gap:4px;}
-.lang-btn{ font-size:12px;font-weight:600;letter-spacing:1px; color:var(--ink-soft);padding:4px 8px; transition:all 0.3s; }
-.lang-btn.active,.lang-btn:hover{color:var(--gold);}
-.nav-burger{ display:flex;flex-direction:column;gap:5px; padding:8px;cursor:pointer; }
-.nav-burger span{ display:block;width:24px;height:2px; background:var(--ink);transition:all 0.3s; }
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-@media(max-width: 1050px) { .nav-links { display: none !important; } }
-@media(min-width: 1051px) { .nav-burger { display: none !important; } }
-
-/* ═══════════════════════════════════════════
-   SIDE SOCIAL RAIL (电脑端悬浮栏 - 已恢复)
-═══════════════════════════════════════════ */
-#side-rail{
-  position:fixed;right:0;top:50%;z-index:300; transform:translateY(-50%); display:flex;flex-direction:column;
-  background:var(--white); border-left:1px solid var(--beige); box-shadow:-5px 0 20px rgba(0,0,0,0.03);
-}
-body.ar #side-rail{right:auto;left:0;border-left:none;border-right:1px solid var(--beige);box-shadow:5px 0 20px rgba(0,0,0,0.03);}
-.rail-btn{
-  width:46px;height:46px; display:flex;align-items:center;justify-content:center;
-  color:var(--ink-soft);font-size:18px; border-bottom:1px solid var(--beige); transition:all 0.3s;
-}
-.rail-btn:last-child{border-bottom:none;}
-.rail-btn:hover{background:var(--cream);color:var(--gold);}
-.rail-btn svg{width:18px;height:18px;fill:currentColor;}
-@media(max-width:1050px){#side-rail{display:none;}}
-
-/* ═══════════════════════════════════════════
-   MOBILE MENU OVERLAY & BOTTOM ICONS (已恢复)
-═══════════════════════════════════════════ */
-#menu-overlay{
-  position:fixed;inset:0;z-index:400; background:var(--white);
-  transform:translateX(100%); transition:transform 0.6s cubic-bezier(0.77,0,0.175,1);
-  overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column;
-}
-#menu-overlay.open{transform:translateX(0);}
-body.ar #menu-overlay{transform:translateX(-100%);}
-body.ar #menu-overlay.open{transform:translateX(0);}
-.menu-inner{ flex: 1; padding:100px 0 0; display:flex;flex-direction:column; }
-
-.mob-nav-list { display: flex; flex-direction: column; width: 100%; flex: 1;}
-.mob-nav-item { border-bottom: 1px solid var(--beige); display: flex; flex-direction: column; }
-.mob-nav-header {
-  padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-b); font-size: 15px; font-weight: 600; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--ink); cursor: pointer; transition: color 0.3s;
-}
-body.ar .mob-nav-header { font-size: 18px; flex-direction: row-reverse; }
-.mob-nav-header:hover { color: var(--gold); }
-.mob-arrow { transition: transform 0.3s ease; font-size: 16px; }
-body.ar .mob-arrow { transform: rotate(180deg); }
-.mob-nav-item.active .mob-arrow { transform: rotate(90deg); color: var(--gold); }
-body.ar .mob-nav-item.active .mob-arrow { transform: rotate(90deg); color: var(--gold); }
-.mob-nav-item.active .mob-nav-header { color: var(--gold); }
-
-.mob-sub-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--cream); }
-.mob-nav-item.active .mob-sub-menu { max-height: 300px; }
-.mob-sub-link { display: block; padding: 14px 48px; font-size: 14px; font-weight: 500; color: var(--ink-soft); transition: 0.3s; }
-body.ar .mob-sub-link { font-size: 16px; text-align: right; }
-.mob-sub-link:hover { color: var(--gold); padding-left: 54px; }
-body.ar .mob-sub-link:hover { padding-left: 48px; padding-right: 54px; }
-
-/* 手机菜单底部的社交宫格 - 已恢复 TikTok 和所有链接 */
-.mob-social-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-  background: var(--beige); border-top: 1px solid var(--beige); border-bottom: 1px solid var(--beige);
-  margin-top: 40px;
-}
-.mob-social-item {
-  background: var(--white); padding: 24px 0; display: flex; justify-content: center; align-items: center;
-  color: var(--ink); transition: background 0.3s;
-}
-.mob-social-item:hover { background: var(--cream); color: var(--gold); }
-.mob-social-item svg { width: 20px; height: 20px; fill: currentColor; }
-
-/* ═══════════════════════════════════════════
-   FLOATING WHATSAPP
-═══════════════════════════════════════════ */
-.floating-wa {
-  position: fixed; bottom: 30px; right: 30px; z-index: 999;
-  width: 60px; height: 60px; background: #25D366; border-radius: 50%;
-  display: flex; justify-content: center; align-items: center;
-  box-shadow: 0 10px 30px rgba(37,211,102,0.4); transition: transform 0.3s;
-}
-body.ar .floating-wa { right: auto; left: 30px; }
-.floating-wa:hover { transform: translateY(-5px) scale(1.05); }
-.floating-wa svg { width: 30px; height: 30px; fill: #FFF; }
-@media(min-width: 1051px) {
-  .floating-wa { display: none; } /* 电脑端已有右侧边栏，隐藏这个圆点避免重复 */
-}
-
-/* ═══════════════════════════════════════════
-   HERO SECTION
-═══════════════════════════════════════════ */
-#hero{width:100%;padding-top:72px;background:var(--ink);}
-.hero-slide{position:relative;width:100%;overflow:hidden;}
-.hero-slide:first-child{height:100svh;min-height:640px;}
-.hero-slide:not(:first-child){height:70svh;min-height:480px;}
-.hero-img{ position:absolute;inset:0; width:100%;height:100%; object-fit:cover; transition:transform 8s ease; }
-.hero-slide:hover .hero-img{transform:scale(1.04);}
-
-.hero-grad-top{ position:absolute;inset:0; background: rgba(0,0,0,0.4); }
-.hero-grad{
-  position:absolute;bottom:0;left:0;right:0;height:80%;
-  background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.5) 50%,transparent 100%);
-}
-
-.hero-caption{
-  position:absolute;bottom:0;left:0;right:0; padding:40px 48px;
-  display:flex;align-items:flex-end;justify-content:space-between; gap:16px;
-}
-@media(max-width:768px){.hero-caption{padding:40px 24px; flex-direction: column; align-items: flex-start;}}
-body.ar .hero-caption{align-items: flex-end;}
-@media(max-width:768px){ body.ar .hero-caption{align-items: flex-end;} }
-
-.hero-label{
-  font-family:var(--font-b); font-size:clamp(12px,2vw,14px);font-weight:600;
-  letter-spacing:4px;text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px;
-}
-.hero-actions { display: flex; gap: 16px; margin-top: 32px; }
-@media(max-width: 480px) {
-  .hero-actions { flex-direction: column; width: 100%; margin-top: 32px; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-}
-
-/* ═══════════════════════════════════════════
-   INTRO
-═══════════════════════════════════════════ */
-#intro{padding:120px 0;background:var(--white);}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-@media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:56px;}}
-.intro-kpi-row{
-  display:grid;grid-template-columns:repeat(3,1fr); gap:1px;background:var(--beige);
-  border:1px solid var(--beige);margin-top:40px;
-}
-.kpi-cell{background:var(--cream);padding:32px 20px;text-align:center;}
-.kpi-num{font-family:var(--font-d);font-size:46px;font-weight:400;color:var(--ink);line-height:1;}
-.kpi-label{ font-size:11px;font-weight:600;letter-spacing:2px; text-transform:uppercase;color:var(--ink-soft);margin-top:12px; }
-body.ar .kpi-label {font-size: 13px; font-weight:700;}
-
-/* ═══════════════════════════════════════════
-   SERVICES
-═══════════════════════════════════════════ */
-#services{background:var(--white);}
-.service-block{ width:100%;display:grid;grid-template-columns:1fr 1fr;min-height:560px; }
-.service-block.reverse{direction:rtl;}
-.service-block.reverse>*{direction:ltr;}
-body.ar .service-block{direction:ltr;}
-body.ar .service-block.reverse{direction:rtl;}
-body.ar .service-block.reverse>*{direction:rtl;}
-@media(max-width:768px){ .service-block,.service-block.reverse{grid-template-columns:1fr;direction:ltr;} }
-
-.service-img-wrap{position:relative;overflow:hidden;}
-.service-img{ width:100%;height:100%;min-height:400px; object-fit:cover;transition:transform 1s var(--ease); }
-.service-block:hover .service-img{transform:scale(1.05);}
-
-.service-text-wrap{ background:var(--cream);padding:80px 64px; display:flex;flex-direction:column;justify-content:center; }
-@media(max-width:768px){.service-text-wrap{padding:56px 32px;}}
-
-.service-label{ font-family:var(--font-b);font-size:12px;font-weight:600; letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px; }
-.service-title{ font-family:var(--font-d);font-size:clamp(32px,4vw,52px); font-weight:400;line-height:1.2;color:var(--ink);margin-bottom:24px; }
-body.ar .service-title{font-weight:700;}
-.service-desc{ font-size:16px;font-weight:400;line-height:1.8; color:var(--ink-soft);margin-bottom:40px; }
-
-.service-cta{
-  display:inline-flex;align-items:center;gap:12px; font-family:var(--font-b);font-size:12px;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;color:var(--ink); padding-bottom:6px;border-bottom:2px solid var(--ink);
-  width:fit-content;transition:all 0.3s;
-}
-.service-cta:hover{color:var(--gold);border-color:var(--gold);}
-body.ar .service-cta{flex-direction:row-reverse; font-size:14px;}
-
-/* ═══════════════════════════════════════════
-   DYNAMIC GALLERY & LIGHTBOX
-═══════════════════════════════════════════ */
-#gallery{padding:120px 0;background:var(--white);}
-.gallery-head{text-align:center;margin-bottom:48px;}
-.gallery-head .body-text{margin:0 auto;}
-
-.filter-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 56px; }
-.filter-btn {
-  font-family: var(--font-b); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--ink-soft); padding: 14px 32px; border: 1px solid var(--beige); border-radius: 40px; transition: all 0.3s;
-}
-body.ar .filter-btn { font-size:15px; }
-.filter-btn.active, .filter-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
-
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.gallery-grid{grid-template-columns:1fr;}}
-.gallery-item.hide { display: none; }
-.gallery-item{
-  position:relative;overflow:hidden;border-radius:2px; aspect-ratio:4/5;cursor:zoom-in; animation: fadeIn 0.5s ease forwards;
-}
-@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-.gallery-item.wide { grid-column:span 2;aspect-ratio:16/9; }
-@media(max-width:900px){ .gallery-item.wide { grid-column:span 1;aspect-ratio:4/5; } }
-
-.gallery-img{ width:100%;height:100%;object-fit:cover; transition:transform 0.8s var(--ease),filter 0.5s ease;filter:brightness(0.95); }
-.gallery-item:hover .gallery-img{transform:scale(1.05);filter:brightness(0.8);}
-.gallery-caption{
-  position:absolute;inset:0;display:flex;flex-direction:column; align-items:flex-start;justify-content:flex-end;padding:32px;
-  background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 60%); opacity:0;transition:opacity 0.4s ease; pointer-events:none;
-}
-.gallery-item:hover .gallery-caption{opacity:1;}
-.gallery-caption-label{ font-size:11px;font-weight:600;letter-spacing:3px; text-transform:uppercase;color:var(--gold);margin-bottom:8px; }
-.gallery-caption-title{ font-family:var(--font-d);font-size:26px;font-weight:400;color:var(--white); }
-body.ar .gallery-caption-label{font-size: 13px;}
-body.ar .gallery-caption-title{font-size: 28px; font-weight:700;}
-
-.lightbox {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.95); z-index: 9999; display: flex; justify-content: center; align-items: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s;
-}
-.lightbox.active { opacity: 1; pointer-events: auto; }
-.lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-.lightbox-close {
-  position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; font-weight: 300;
-  cursor: pointer; transition: color 0.3s; line-height: 1;
-}
-.lightbox-close:hover { color: var(--gold); }
-
-/* ═══════════════════════════════════════════
-   TRUST STRIP
-═══════════════════════════════════════════ */
-#trust{ padding:100px 0;background:var(--cream); border-top:1px solid var(--beige); border-bottom:1px solid var(--beige); }
-.trust-row{ display:grid;grid-template-columns:repeat(4,1fr); gap:1px;background:var(--beige);border:1px solid var(--beige); }
-@media(max-width:768px){.trust-row{grid-template-columns:repeat(2,1fr);}}
-.trust-cell{ background:var(--cream);padding:48px 24px; text-align:center;transition:background 0.3s; }
-.trust-cell:hover{background:var(--white);}
-.trust-num{font-family:var(--font-d);font-size:52px;font-weight:400;color:var(--ink);line-height:1;}
-.trust-label{ font-size:11px;font-weight:600;letter-spacing:2px; text-transform:uppercase;color:var(--ink-soft);margin-top:12px; }
-body.ar .trust-label{font-size: 13px; font-weight:700;}
-
-/* ═══════════════════════════════════════════
-   CONTACT FORM
-═══════════════════════════════════════════ */
-#contact{padding:120px 0;background:var(--white);}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-@media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:64px;}}
-
-.contact-offices{display:flex;flex-direction:column;gap:24px;margin-top:40px;}
-..office-item{
-  display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding:28px 24px;
-  border:1px solid var(--beige);transition:all 0.3s; border-radius:2px; width:100%;
-}
-.office-item:hover{border-color:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,0.05);}
-body.ar .office-item{align-items:flex-end; text-align:right;}
-.office-country{ font-family:var(--font-b);font-size:12px;font-weight:600; letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px; }
-body.ar .office-country{font-size: 14px;}
-.office-phone{ font-size:18px;font-weight:500;color:var(--ink); font-family:var(--font-b)!important; direction:ltr!important;unicode-bidi:isolate;display:inline-block; }
-.office-note{font-size:14px;color:var(--ink-soft);margin-top:4px;}
-
-.form-panel{background:var(--cream); padding:56px 48px; border-radius:2px; border:1px solid var(--beige);}
-@media(max-width:768px){.form-panel{padding:40px 24px;}}
-.form-panel-title{ font-family:var(--font-d);font-size:36px;font-weight:400; color:var(--ink);margin-bottom:8px;text-align:center; }
-body.ar .form-panel-title{font-weight:700;}
-.form-panel-sub{ font-size:14px;color:var(--ink-soft); text-align:center;margin-bottom:40px;letter-spacing:1px; }
-
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-@media(max-width:900px){.form-row{grid-template-columns:1fr; gap:16px;}}
-
-.fg{margin-bottom:24px;}
-.fg label{
-  display:block;font-size:12px;font-weight:600; letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:8px; text-align: left;
-}
-body.ar .fg label{text-align: right; font-size: 14px;}
-.fg input,.fg select,.fg textarea{
-  width:100%; background:transparent; border:none; border-bottom:1px solid #CCC;
-  color:var(--ink);font-family:var(--font-b);font-size:16px; font-weight:500;
-  padding:12px 0; outline:none;transition:all 0.3s; border-radius:0; appearance:none;-webkit-appearance:none;
-}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom:2px solid var(--gold); padding-bottom:11px;}
-.fg input::placeholder,.fg textarea::placeholder{color:#999; font-weight:400;}
-.fg select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 0 center; padding-right:24px;color:var(--ink); cursor:pointer;
-}
-body.ar .fg select{background-position:left 0 center;padding-right:0;padding-left:24px;}
-.fg textarea{resize:none;min-height:80px;}
-
-.form-btn{width:100%;padding:20px;margin-top:16px;font-size:13px;}
-body.ar .form-btn{font-size: 15px;}
-.form-privacy{text-align:center;font-size:12px;color:var(--stone);margin-top:16px;}
-
-/* ═══════════════════════════════════════════
-   FOOTER (已恢复全量社交链接与 TikTok)
-═══════════════════════════════════════════ */
-footer{ background:var(--ink); padding:80px 0 40px; }
-.footer-grid{ display:grid;grid-template-columns:1.5fr 1fr 1fr; gap:80px;margin-bottom:64px; }
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:48px;}}
-@media(max-width:600px){.footer-grid{grid-template-columns:1fr;gap:40px;}}
-
-.brand-name-ft{
-  font-family:var(--font-d);font-size:26px;font-weight:400; letter-spacing:6px;text-transform:uppercase;color:var(--white);line-height:1;
-  border:1px solid rgba(255,255,255,0.3);display:inline-block;padding:12px 24px;margin-bottom:12px;
-}
-.brand-sub-ft{ font-size:10px;font-weight:600;letter-spacing:4px; text-transform:uppercase;color:var(--stone);margin-bottom:24px; }
-.footer-tagline{ font-size:15px;font-weight:400;color:rgba(255,255,255,0.7); line-height:1.9;max-width:320px; }
-
-.f-socials{display:flex;gap:12px;margin-top:32px;}
-.f-social{
-  width:44px;height:44px; border-radius:50%;display:flex;align-items:center;justify-content:center;
-  color:var(--white);background:rgba(255,255,255,0.1); transition:all 0.3s;
-}
-.f-social:hover{background:var(--gold);color:var(--white); transform:translateY(-3px);}
-.f-social svg{width:18px;height:18px;fill:currentColor;}
-
-.f-col h5{ font-size:12px;font-weight:600;letter-spacing:3px; text-transform:uppercase;color:var(--gold);margin-bottom:24px; }
-body.ar .f-col h5 {font-size: 14px;}
-.f-col ul{display:flex;flex-direction:column;gap:12px;}
-.f-col li{ font-size:15px;font-weight:400;color:rgba(255,255,255,0.7); cursor:pointer;transition:color 0.3s; }
-.f-col li:hover{color:var(--white);}
-
-.footer-bottom-bar{
-  border-top:1px solid rgba(255,255,255,0.1); padding-top:32px;
-  display:flex;flex-direction:column; justify-content:center;align-items:center; gap:16px;text-align:center;
-}
-.footer-copy{font-size:13px;color:rgba(255,255,255,0.5); letter-spacing:1px;}
-
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s ease,transform 0.8s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:0.1s;}
-.reveal-d2{transition-delay:0.2s;}
-</style>
+        /* 联系方式/页脚 */
+        #contact-footer { background: #000; color: #fff; padding: 80px 20px; text-align: center; }
+        .footer-logo { color: var(--gold); font-size: 24px; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
-<body>
 
-  <div id="side-rail">
-    <a href="tel:+97431671083" class="rail-btn" title="Call">
-      <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 018.58 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.58c0-.59-.41-1.04-.99-1.04z"/></svg>
-    </a>
-    <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="rail-btn" title="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
-    <a href="mailto:info@naqigulf.com" class="rail-btn" title="Email">
-      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    </a>
-  </div>
-
-  <nav id="nav">
-    <div class="wrap">
-      <div class="nav-inner">
-        <div class="nav-brand" onclick="scrollToId('hero')">
-          <span class="brand-name">NAQI GULF</span>
-          <span class="brand-sub">MATERIAL SUPPLY</span>
+    <nav id="nav">
+        <div class="nav-inner">
+            <div class="brand-box"><div class="brand-name">NAQI GULF</div></div>
+            <div style="font-size:12px; font-weight:600;">EN / AR</div>
         </div>
+    </nav>
 
-        <div class="nav-right">
-          <div class="lang-group">
-            <button class="lang-btn active" id="nl-en" onclick="setLang('en')">EN</button>
-            <span style="color:var(--beige);font-size:10px;">/</span>
-            <button class="lang-btn" id="nl-ar" onclick="setLang('ar')">AR</button>
-          </div>
-          <div class="nav-burger" id="nav-burger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-          </div>
+    <section id="hero" style="max-width:100%; padding:0;">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="hero-title">NAQI GULF</h1>
+            <p style="letter-spacing:4px; margin-top:10px;">PREMIUM INTERIOR & MATERIALS</p>
         </div>
-      </div>
-    </div>
-  </nav>
+    </section>
 
-  <section id="hero" style="position: relative; width: 100%; min-height: 100vh; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-    <video autoplay muted loop playsinline class="hero-video" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
-      <source src="hero-bg.mp4" type="video/mp4">
-    </video>
-    
-    <div style="position: relative; z-index: 2; text-align: center; padding: 0 20px;">
-      <h1 style="color: #c5a059; font-size: clamp(32px, 10vw, 72px); font-weight: 800; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.8); letter-spacing: 4px;">NAQI GULF</h1>
-      <p style="color: white; font-size: clamp(14px, 4vw, 22px); letter-spacing: 4px; margin-top: 15px; text-transform: uppercase; font-weight: 300;">Premium Interior & Materials</p>
-    </div>
-  </section>
+    <section id="about">
+        <h2 class="section-title">Direct Link to China's Finest</h2>
+        <p style="text-align:center; color:#666; max-width:800px; margin:0 auto; line-height:1.8;">
+            We connect the Middle East's luxury projects with top-tier Chinese manufacturers, 
+            ensuring premium quality and direct factory pricing for marble, furniture, and lighting.
+        </p>
+    </section>
 
-  <section id="contact" style="padding: 120px 20px; background: #000; color: white; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 60px; text-align: center;">
-      
-      <div style="flex: 1; min-width: 280px;">
-        <h4 style="color: #c5a059; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px;">Contact Qatar</h4>
-        <div style="font-size: 24px; font-weight: 300; line-height: 1.8;">
-          <p style="margin: 5px 0;">+974 3167 1083</p>
-          <p style="margin: 5px 0;">+974 3000 3391</p>
+    <div id="contact-footer">
+        <div class="footer-logo">NAQI GULF</div>
+        <div style="margin-bottom: 40px;">
+            <p style="font-size:20px; margin-bottom:10px;">+974 3167 1083 / +974 3000 3391</p>
+            <p>info@naqigulf.com</p>
         </div>
-      </div>
-
-      <div style="flex: 1; min-width: 280px;">
-        <h4 style="color: #c5a059; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px;">Email Us</h4>
-        <p style="font-size: 24px; font-weight: 300; margin-top: 5px;">info@naqigulf.com</p>
-      </div>
-
+        <p style="color:#444; font-size:12px;">&copy; 2026 NAQI GULF CHINESE TRADING AND DECORATION</p>
     </div>
-  </section>
 
-  <footer style="background: #000; padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <p style="color: #666; font-size: 12px; letter-spacing: 1px; margin-bottom: 12px;">
-        &copy; 2026 NAQI GULF CHINESE TRADING AND DECORATION
-      </p>
-      <p dir="rtl" style="color: #666; font-size: 15px; font-family: 'Tajawal', sans-serif;">
-        شركة نقي الخليج الصيني للتجارة والديكور © ٢٠٢٦
-      </p>
-    </div>
-  </footer>
-
-  <div id="menu-overlay">
-    <div class="menu-inner">
-      <ul class="mob-nav-list">
-        <li class="mob-nav-item">
-          <div class="mob-nav-header" onclick="scrollToId('hero'); toggleMenu();">Home / الرئيسية</div>
-        </li>
-        <li class="mob-nav-item">
-          <div class="mob-nav-header" onclick="scrollToId('contact'); toggleMenu();">Contact / اتصل بنا</div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <script>
-    /* 此处保留你原有的脚本代码，即下方已经写好的 handleFormSubmit, toggleMenu 等逻辑 */
-  </script>
-
-</body>
 </body>
 </html>
