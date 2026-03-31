@@ -543,32 +543,76 @@ body.ar .f-col h5 {font-size: 14px;}
 </style>
 </head>
 <body>
-  <nav id="nav" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: #ffffff; border-bottom: 1px solid #eeeeee; padding: 15px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-        <div style="border: 1px solid #000; padding: 5px 15px; cursor: pointer;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <span style="font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; font-weight: 700; color: #000;">NAQI GULF</span>
+  <nav id="nav" role="navigation">
+   
+  <div class="wrap">
+    <div class="nav-inner">
+      <div class="nav-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div>
+        <div class="brand-sub" data-en="MATERIAL SUPPLY" data-ar="لتوريد المواد">MATERIAL SUPPLY</div>
+      </div>
+      
+      <ul class="nav-links" id="desktop-links">
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Materials" data-ar="المواد">Materials</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx & Granite</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Furniture" data-ar="الأثاث">Furniture</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bespoke Majlis" data-ar="مجالس مخصصة">Bespoke Majlis</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Lighting" data-ar="الإضاءة">Lighting</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات ضخمة">Grand Chandeliers</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Fit-out" data-ar="التنفيذ">Fit-out</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#services" class="dropdown-item" data-en="Residential" data-ar="سكني">Residential</a>
+            <a href="#services" class="dropdown-item" data-en="Commercial" data-ar="تجاري">Commercial</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#gallery" class="main-link" onclick="filterGallery('all')" data-en="Collections" data-ar="مجموعاتنا">Collections</a></li>
+        <li class="nav-item"><a href="#intro" class="main-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
+        <li class="nav-item"><a href="#contact" class="main-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-group" id="nav-lang">
+          <button class="lang-btn active" onclick="setLang('en')" id="nl-en">EN</button>
+          <span style="color:var(--stone);font-size:13px;">/</span>
+          <button class="lang-btn" onclick="setLang('ar')" id="nl-ar">AR</button>
         </div>
-        <div style="display: flex; gap: 15px; color: #000; font-size: 12px; font-weight: 600;">
-            <span onclick="setLang('en')" style="cursor:pointer;">EN</span>
-            <span style="color:#ddd;">|</span>
-            <span onclick="setLang('ar')" style="cursor:pointer;">AR</span>
-        </div>
+        <div class="nav-burger" id="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      </div>
     </div>
+  </div>
 </nav>
-<section id="hero" style="position: relative; width: 100%; height: 100vh; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
-    <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.65);">
+ <section id="hero" style="position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; z-index: 1;">
+    <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.65);">
         <source src="hero-bg.mp4" type="video/mp4">
     </video>
     <div style="position: relative; z-index: 2; text-align: center; padding: 0 20px;">
-        <h1 style="color: #c5a059; font-size: clamp(32px, 8vw, 64px); font-weight: 800; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">NAQI GULF</h1>
-        <p style="color: #fff; font-size: clamp(14px, 3vw, 20px); letter-spacing: 3px; margin-top: 15px; text-transform: uppercase; font-weight: 300;">Premium Interior & Materials</p>
+        <h1 class="display-title" style="color: var(--gold); letter-spacing: 5px; text-transform: uppercase;">NAQI GULF</h1>
+        <p style="color: #fff; font-size: clamp(14px, 3vw, 20px); letter-spacing: 3px; margin-top: 15px; text-transform: uppercase; font-family: var(--font-b);">Premium Interior & Materials</p>
     </div>
 </section>
 
-<section id="intro" style="padding: 100px 20px; background: #ffffff; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 40px); margin-bottom: 25px;">The Gulf's Direct Link to <em>China's Finest</em></h2>
-        <p style="color: #666; line-height: 1.8; font-size: 16px;">
+<section id="intro" style="padding: 100px 20px; background: #fff; text-align: center; position: relative; z-index: 10; clear: both;">
+    <div class="wrap">
+        <h2 class="section-head" style="margin-bottom: 25px;">The Gulf's Direct Link to <em>China's Finest</em></h2>
+        <p class="body-text" style="margin: 0 auto;">
             Connecting the Middle East's most ambitious architectural projects with China's premium manufacturers. 
             Direct factory access for marble, furniture, and custom lighting.
         </p>
@@ -725,102 +769,7 @@ body.ar .f-col h5 {font-size: 14px;}
   </div>
 </div>
 
-<nav id="nav" role="navigation">
-  <div class="wrap">
-    <div class="nav-inner">
-      <div class="nav-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div>
-        <div class="brand-sub" data-en="MATERIAL SUPPLY" data-ar="لتوريد المواد">MATERIAL SUPPLY</div>
-      </div>
-      
-      <ul class="nav-links" id="desktop-links">
-        <li class="nav-item">
-          <a href="#services" class="main-link"><span data-en="Materials" data-ar="المواد">Materials</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
-          <div class="dropdown-menu">
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx & Granite</a>
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#services" class="main-link"><span data-en="Furniture" data-ar="الأثاث">Furniture</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
-          <div class="dropdown-menu">
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bespoke Majlis" data-ar="مجالس مخصصة">Bespoke Majlis</a>
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#services" class="main-link"><span data-en="Lighting" data-ar="الإضاءة">Lighting</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
-          <div class="dropdown-menu">
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات ضخمة">Grand Chandeliers</a>
-            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a href="#services" class="main-link"><span data-en="Fit-out" data-ar="التنفيذ">Fit-out</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
-          <div class="dropdown-menu">
-            <a href="#services" class="dropdown-item" data-en="Residential" data-ar="سكني">Residential</a>
-            <a href="#services" class="dropdown-item" data-en="Commercial" data-ar="تجاري">Commercial</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="#gallery" class="main-link" onclick="filterGallery('all')" data-en="Collections" data-ar="مجموعاتنا">Collections</a></li>
-        <li class="nav-item"><a href="#intro" class="main-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
-        <li class="nav-item"><a href="#contact" class="main-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
-      </ul>
 
-      <div class="nav-right">
-        <div class="lang-group" id="nav-lang">
-          <button class="lang-btn active" onclick="setLang('en')" id="nl-en">EN</button>
-          <span style="color:var(--stone);font-size:13px;">/</span>
-          <button class="lang-btn" onclick="setLang('ar')" id="nl-ar">AR</button>
-        </div>
-        <div class="nav-burger" id="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-      </div>
-    </div>
-  </div>
-</nav>
-<section id="hero" style="position: relative; width: 100%; background: #fff; line-height: 0;">
-    <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block; object-fit: cover;">
-        <source src="hero-bg.mp4" type="video/mp4">
-    </video>
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; z-index: 2;">
-        <h1 style="color: #c5a059; font-size: clamp(24px, 8vw, 56px); font-weight: 800; text-transform: uppercase; margin: 0; text-shadow: 0 4px 20px rgba(0,0,0,0.9);">NAQI GULF</h1>
-        <p style="color: white; font-size: clamp(10px, 3vw, 18px); letter-spacing: 2px; margin-top: 10px;">PREMIUM INTERIOR & MATERIALS</p>
-    </div>
-</section>
-
-<section id="intro" style="padding: 80px 20px; background: #fff; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 32px; color: #1a1a1a; margin-bottom: 20px;">The Gulf's Direct Link to China's Finest</h2>
-        <p style="color: #666; line-height: 1.8; font-size: 16px;">NAQI Gulf Chinese Trading connects the region's most ambitious architectural projects with China's premium manufacturers.</p>
-    </div>
-</section>
-
-<section id="contact" style="padding: 60px 20px; background: #111; color: white;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px;">
-        <div style="text-align: center;">
-            <h4 style="color: #c5a059;">Contact Qatar</h4>
-            <p>+974 3167 1083</p>
-            <p>+974 3000 3391</p>
-        </div>
-        <div style="text-align: center;">
-            <h4 style="color: #c5a059;">Email Us</h4>
-            <p>info@naqigulf.com</p>
-        </div>
-    </div>
-</section>
-
-<footer style="background: #000; color: #888; padding: 40px 20px; text-align: center; border-top: 1px solid #222;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <p style="font-size: 12px; letter-spacing: 1px; margin-bottom: 10px;">
-            &copy; 2026 NAQI GULF CHINESE TRADING AND DECORATION
-        </p>
-        <p dir="rtl" style="font-size: 14px; font-family: sans-serif;">
-            شركة نقي الخليج الصيني للتجارة والديكور © ٢٠٢٦
-        </p>
-    </div>
-</footer>
 
 <script>
 'use strict';
