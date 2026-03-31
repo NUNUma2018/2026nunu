@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 
 <link rel="icon" type="image/png" href="images/favicon.png?v=6">
-<link rel="apple-touch-icon" href="images/favicon.png?v=6">
-<link rel="icon" type="image/png" href="favicon.png">
+<<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <style>
   /* ═══════════════════════════════════════════
    LUXURY TRUST BADGES — FOR contact-left (信任标签)
@@ -543,6 +543,37 @@ body.ar .f-col h5 {font-size: 14px;}
 </style>
 </head>
 <body>
+  <nav id="nav" style="position: fixed; top: 0; width: 100%; z-index: 1000; background: #ffffff; border-bottom: 1px solid #eeeeee; padding: 15px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+        <div style="border: 1px solid #000; padding: 5px 15px; cursor: pointer;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <span style="font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 3px; font-weight: 700; color: #000;">NAQI GULF</span>
+        </div>
+        <div style="display: flex; gap: 15px; color: #000; font-size: 12px; font-weight: 600;">
+            <span onclick="setLang('en')" style="cursor:pointer;">EN</span>
+            <span style="color:#ddd;">|</span>
+            <span onclick="setLang('ar')" style="cursor:pointer;">AR</span>
+        </div>
+    </div>
+</nav>
+<section id="hero" style="position: relative; width: 100%; height: 100vh; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
+    <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.65);">
+        <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 0 20px;">
+        <h1 style="color: #c5a059; font-size: clamp(32px, 8vw, 64px); font-weight: 800; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">NAQI GULF</h1>
+        <p style="color: #fff; font-size: clamp(14px, 3vw, 20px); letter-spacing: 3px; margin-top: 15px; text-transform: uppercase; font-weight: 300;">Premium Interior & Materials</p>
+    </div>
+</section>
+
+<section id="intro" style="padding: 100px 20px; background: #ffffff; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px, 5vw, 40px); margin-bottom: 25px;">The Gulf's Direct Link to <em>China's Finest</em></h2>
+        <p style="color: #666; line-height: 1.8; font-size: 16px;">
+            Connecting the Middle East's most ambitious architectural projects with China's premium manufacturers. 
+            Direct factory access for marble, furniture, and custom lighting.
+        </p>
+    </div>
+</section>
   <section id="gallery">
   <div class="wrap">
     <div class="gallery-head reveal">
