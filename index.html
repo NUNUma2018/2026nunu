@@ -604,6 +604,43 @@ body.ar .f-col h5 {font-size: 14px;}
 .reveal.in{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:0.1s;}
 .reveal-d2{transition-delay:0.2s;}
+/* 1. 斩断视频下方的巨大白边 */
+#intro {
+    padding: 40px 0 !important; /* 从 120px 缩减到 40px */
+    margin-top: -20px !important; /* 进一步向上提拉 */
+}
+
+/* 2. 强制服务模块（家具和大理石）左右并排 */
+#services .wrap {
+    display: flex !important;
+    flex-direction: row !important; /* 电脑端左右并排 */
+    gap: 30px !important;
+    padding: 0 48px !important;
+}
+.service-block {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important; /* 图片在上文字在下 */
+    background: #fff !important;
+    border: 1px solid #eee !important;
+    transition: transform 0.3s ease;
+}
+.service-block:hover { transform: translateY(-5px); }
+.service-img-wrap { height: 350px !important; overflow: hidden; }
+.service-img { width: 100%; height: 100%; object-fit: cover !important; }
+
+/* 手机端自动变回上下堆叠 */
+@media(max-width: 900px) {
+    #services .wrap { flex-direction: column !important; }
+    .service-img-wrap { height: 250px !important; }
+}
+
+/* 3. 还原高级感表单样式 */
+.form-panel {
+    background: #ffffff !important;
+    padding: 50px !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08) !important;
+}
 </style>
 </head>
 <body>
