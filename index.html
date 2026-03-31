@@ -100,7 +100,35 @@ section#contact nav,
   flex-direction: column;
   gap: 32px; /* 标签之间的间距 */
 }
-@media(max-width: 1024px) { .luxury-trust-badges { margin-top: 40px; } }
+/* ============================================================
+   问题 1 修复：手机端视频严格遵循 16:9 比例，无黑边、无过度裁切
+   ============================================================ */
+@media (max-width: 768px) {
+    #hero {
+        height: auto !important; /* 放弃强制高度 */
+        aspect-ratio: 16 / 9 !important; /* 严格锁定 16:9 宽屏比例 */
+        width: 100vw !important; /* 撑满手机屏幕宽度 */
+        min-height: unset !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    #hero video {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* 完美覆盖，绝无黑边 */
+    }
+    #hero h1 {
+        font-size: 28px !important; /* 文字缩小以适应 16:9 的紧凑空间 */
+        margin-top: 0 !important;
+    }
+    #hero p {
+        font-size: 10px !important;
+    }
+}
 
 .trust-badge-item {
   display: flex;
@@ -869,17 +897,23 @@ body.ar .f-col h5 {font-size: 14px;}
   </div>
 </section>
 
-<footer style="background-color: #171615; color: #8A8A8A; padding: 100px 0 40px; font-family: var(--font-b); clear: both;">
+<footer id="footer" style="background-color: #171615; color: #8A8A8A; padding: 100px 0 40px; font-family: var(--font-b); clear: both;">
   <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; padding: 0 40px;">
 
     <div>
-      <div style="border: 1px solid #444; padding: 15px 25px; display: inline-block; margin-bottom: 20px;">
+      <a href="#hero" style="text-decoration: none; border: 1px solid #444; padding: 15px 25px; display: inline-block; margin-bottom: 20px; transition: 0.3s;" onmouseover="this.style.borderColor='#C5A059'" onmouseout="this.style.borderColor='#444'">
         <h2 style="color: #FFF; font-family: var(--font-d); font-weight: 400; font-size: 28px; letter-spacing: 6px; margin: 0;">NAQI GULF</h2>
-      </div>
+      </a>
       <p style="font-size: 10px; letter-spacing: 3px; color: #888; text-transform: uppercase; margin-top: -10px; margin-bottom: 30px;">Material Supply & Decoration</p>
       <p style="font-size: 15px; line-height: 1.8; margin-bottom: 40px; max-width: 350px;">
         Your direct connection to China's finest material manufacturers. Equipping Gulf palaces with premium marble, furniture, and lighting since 2010.
       </p>
+      
+      <div style="display: flex; gap: 15px;">
+        <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" style="width: 44px; height: 44px; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #888; transition: 0.3s;" onmouseover="this.style.borderColor='#C5A059'; this.style.color='#C5A059'" onmouseout="this.style.borderColor='#444'; this.style.color='#888'"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://www.tiktok.com/@mrma_omar" target="_blank" style="width: 44px; height: 44px; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #888; transition: 0.3s;" onmouseover="this.style.borderColor='#C5A059'; this.style.color='#C5A059'" onmouseout="this.style.borderColor='#444'; this.style.color='#888'"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg></a>
+        <a href="https://wa.me/97431671083" target="_blank" style="width: 44px; height: 44px; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #888; transition: 0.3s;" onmouseover="this.style.borderColor='#C5A059'; this.style.color='#C5A059'" onmouseout="this.style.borderColor='#444'; this.style.color='#888'"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg></a>
+      </div>
     </div>
 
     <div>
@@ -895,29 +929,39 @@ body.ar .f-col h5 {font-size: 14px;}
     <div>
       <h4 style="color: #C5A059; font-size: 13px; font-weight: 600; letter-spacing: 3px; margin-bottom: 35px; text-transform: uppercase;">Contact</h4>
       <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 20px;">
-        <li style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
-          <span style="color: #8A8A8A; font-size: 12px; font-weight: 700; letter-spacing: 2px; width: 65px; flex-shrink: 0;">QATAR</span>
-          <span dir="ltr" style="color: #C5A059; font-size: 16px; font-weight: 600; letter-spacing: 1px; unicode-bidi: isolate;">+974 3167 1083</span>
+        <li style="display: flex; align-items: flex-start; justify-content: flex-start; gap: 15px;">
+          <span style="color: #8A8A8A; font-size: 12px; font-weight: 700; letter-spacing: 2px; width: 65px; flex-shrink: 0; padding-top: 2px;">QATAR</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+              <a href="tel:+97431671083" dir="ltr" style="color: #C5A059; font-size: 16px; font-weight: 600; letter-spacing: 1px; unicode-bidi: isolate; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#C5A059'">+974 3167 1083</a>
+              <a href="tel:+97430003391" dir="ltr" style="color: #C5A059; font-size: 16px; font-weight: 600; letter-spacing: 1px; unicode-bidi: isolate; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#C5A059'">+974 3000 3391</a>
+          </div>
         </li>
         <li style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
           <span style="color: #8A8A8A; font-size: 12px; font-weight: 700; letter-spacing: 2px; width: 65px; flex-shrink: 0;">KSA</span>
-          <span dir="ltr" style="color: #8A8A8A; font-size: 15px; letter-spacing: 1px; unicode-bidi: isolate;">+966 51 046 3440</span>
+          <a href="tel:+966510463440" dir="ltr" style="color: #8A8A8A; font-size: 15px; letter-spacing: 1px; unicode-bidi: isolate; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#8A8A8A'">+966 51 046 3440</a>
         </li>
         <li style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
           <span style="color: #8A8A8A; font-size: 12px; font-weight: 700; letter-spacing: 2px; width: 65px; flex-shrink: 0;">CHINA</span>
-          <span dir="ltr" style="color: #8A8A8A; font-size: 15px; letter-spacing: 1px; unicode-bidi: isolate;">+86 181 0227 8999</span>
+          <a href="tel:+8618102278999" dir="ltr" style="color: #8A8A8A; font-size: 15px; letter-spacing: 1px; unicode-bidi: isolate; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#8A8A8A'">+86 181 0227 8999</a>
         </li>
         <li style="margin-top: 10px;">
-          <span dir="ltr" style="color: #8A8A8A; font-size: 15px; unicode-bidi: isolate; display: block; margin-bottom: 10px;">info@naqigulf.com</span>
-          <span style="color: #8A8A8A; font-size: 14px;">Doha · Riyadh · Guangzhou</span>
+          <a href="mailto:info@naqigulf.com" dir="ltr" style="color: #8A8A8A; font-size: 15px; unicode-bidi: isolate; display: block; margin-bottom: 10px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#8A8A8A'">info@naqigulf.com</a>
+          <span style="color: #8A8A8A; font-size: 14px;">QATAR · Riyadh · Guangzhou</span>
         </li>
       </ul>
     </div>
 
   </div>
 
-  <div style="border-top: 1px solid #222; margin-top: 80px; padding-top: 30px; text-align: center;">
-    <p style="font-size: 13px; color: #666; letter-spacing: 1px;">© 2026 NAQI GULF CHINESE TRADING AND DECORATION — شركة نقي الخليج الصيني للتجارة والديكور</p>
+  <div dir="ltr" style="border-top: 1px solid #222; margin-top: 80px; padding-top: 30px; text-align: center; direction: ltr !important;">
+    <p style="font-size: 12px; color: #666; letter-spacing: 1px; line-height: 2; margin: 0;">
+      <span style="display: block;">© 2026 NAQI GULF CHINESE TRADING AND DECORATION</span>
+      <span style="display: block; font-family: 'Noto Kufi Arabic', Arial, sans-serif;">شركة نقي الخليج الصيني للتجارة والديكور</span>
+    </p>
+    <div style="margin-top: 20px; display: flex; justify-content: center; gap: 30px;">
+      <a href="#hero" style="font-size: 12px; color: #555; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#C5A059'" onmouseout="this.style.color='#555'">Privacy</a>
+      <a href="#hero" style="font-size: 12px; color: #555; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#C5A059'" onmouseout="this.style.color='#555'">Terms</a>
+    </div>
   </div>
 </footer>
 
