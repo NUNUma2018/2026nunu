@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>NAQI Gulf — Premium Building Materials & Furniture Supply</title>
+<meta name="description" content="Direct supply of luxury furniture, marble, lighting and building materials from China to Qatar, Saudi Arabia, and UAE.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="images/favicon.png?v=6">
+<<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<style>
+/* --- 1. 社交图标：黑金半透明奢华感 --- */
+#side-rail a {
+    background: rgba(20, 20, 20, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(197, 160, 89, 0.3) !important;
+    color: #C5A059 !important;
+    border-radius: 4px !important;
+    transition: all 0.4s ease !important;
+}
+
+/* --- 2. 手机端视频：严格 16:9 比例，无黑边 --- */
+@media (max-width: 768px) {
+    #hero {
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        width: 100vw !important;
+    }
+    #hero video {
+        object-fit: cover !important;
+    }
+}
+
+/* --- 3. 服务板块：暴力消除白边与线条 --- */
+.service-block {
+    border: none !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06) !important;
+}
+.service-img-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* --- 4. 手机端页脚：绝对居中对称 --- */
+@media (max-width: 768px) {
+    #footer { text-align: center !important; }
+    #footer .wrap > div { align-items: center !important; }
+    #footer .contact-item { flex-direction: column !important; align-items: center !important; text-align: center !important; }
+}
+</style>
+</head>
+<body>
+  <nav id="nav" role="navigation">
+   
+  <div class="wrap">
+    <div class="nav-inner">
+      <div class="nav-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div>
+        <div class="brand-sub" data-en="MATERIAL SUPPLY" data-ar="لتوريد المواد">MATERIAL SUPPLY</div>
+      </div>
+      
+      <ul class="nav-links" id="desktop-links">
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Materials" data-ar="المواد">Materials</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx & Granite</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Furniture" data-ar="الأثاث">Furniture</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bespoke Majlis" data-ar="مجالس مخصصة">Bespoke Majlis</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Lighting" data-ar="الإضاءة">Lighting</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات ضخمة">Grand Chandeliers</a>
+            <a href="#gallery" class="dropdown-item" onclick="filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link"><span data-en="Fit-out" data-ar="التنفيذ">Fit-out</span><svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="#services" class="dropdown-item" data-en="Residential" data-ar="سكني">Residential</a>
+            <a href="#services" class="dropdown-item" data-en="Commercial" data-ar="تجاري">Commercial</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#gallery" class="main-link" onclick="filterGallery('all')" data-en="Collections" data-ar="مجموعاتنا">Collections</a></li>
+        <li class="nav-item"><a href="#intro" class="main-link" data-en="About Us" data-ar="من نحن">About Us</a></li>
+        <li class="nav-item"><a href="#contact" class="main-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-group" id="nav-lang">
+          <button class="lang-btn active" onclick="setLang('en')" id="nl-en">EN</button>
+          <span style="color:var(--stone);font-size:13px;">/</span>
+          <button class="lang-btn" onclick="setLang('ar')" id="nl-ar">AR</button>
+        </div>
+        <div class="nav-burger" id="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</nav>
+ <section id="hero" style="position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; z-index: 1;">
+    <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.65);">
+        <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 0 20px;">
+        <h1 class="display-title" style="color: var(--gold); letter-spacing: 5px; text-transform: uppercase;">NAQI GULF</h1>
+        <p style="color: #fff; font-size: clamp(14px, 3vw, 20px); letter-spacing: 3px; margin-top: 15px; text-transform: uppercase; font-family: var(--font-b);">Premium Interior & Materials</p>
+    </div>
+</section>
+
+<section id="intro" style="padding: 100px 20px; background: #0a0a0a; text-align: center; border-bottom: 1px solid #222;">
+    <div class="wrap">
+        <h2 class="section-head" style="color: #fff;" data-en="The Gulf's Direct Link to <span style='color:#C5A059'>China's Finest</span>" data-ar="بوابتك المباشرة نحو <span style='color:#C5A059'>الفخامة الصينية</span>">The Gulf's Direct Link to China's Finest</h2>
+        <p class="body-text" style="color: #888; max-width: 800px; margin: 20px auto;" data-en="Connecting projects with China's premium manufacturers." data-ar="نربط المشاريع المعمارية بنخبة المصنعين في الصين.">Connecting projects with China's premium manufacturers.</p>
+    </div>
+</section>
+
+<section id="services" style="background: #f9f9f9; padding: 100px 0;">
+    <div class="wrap" style="display: flex; flex-direction: row; gap: 40px; flex-wrap: wrap; padding: 0 40px;">
+        <div class="service-block" style="flex: 1; min-width: 320px; background: #fff;">
+            <div class="service-img-wrap" style="height: 400px;"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding: 40px;"><h3 data-en="Luxury Furniture" data-ar="أثاث فاخر">Luxury Furniture</h3></div>
+        </div>
+        <div class="service-block" style="flex: 1; min-width: 320px; background: #fff;">
+            <div class="service-img-wrap" style="height: 400px;"><img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding: 40px;"><h3 data-en="Premium Marble" data-ar="رخام فاخر">Premium Marble</h3></div>
+        </div>
+    </div>
+</section>
+
+<section id="services" style="background: #f9f9f9; padding: 100px 0;">
+    <div class="wrap" style="display: flex; flex-direction: row; gap: 40px; flex-wrap: wrap; padding: 0 40px;">
+        <div class="service-block" style="flex: 1; min-width: 320px; background: #fff;">
+            <div class="service-img-wrap" style="height: 400px;"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding: 40px;"><h3 data-en="Luxury Furniture" data-ar="أثاث فاخر">Luxury Furniture</h3></div>
+        </div>
+        <div class="service-block" style="flex: 1; min-width: 320px; background: #fff;">
+            <div class="service-img-wrap" style="height: 400px;"><img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200" style="width:100%; height:100%; object-fit:cover;"></div>
+            <div style="padding: 40px;"><h3 data-en="Premium Marble" data-ar="رخام فاخر">Premium Marble</h3></div>
+        </div>
+    </div>
+</section>
+
+<section id="services" style="background: #f9f9f9; padding: 100px 0; clear: both;">
+    <div class="wrap" style="display: flex; flex-direction: row; gap: 40px; justify-content: space-between; flex-wrap: wrap;">
+        <div class="service-block" style="flex: 1; min-width: 320px; display: flex; flex-direction: column; background: #fff; border: 1px solid #eee;">
+            <div class="service-img-wrap" style="height: 350px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" class="service-img" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="service-text-wrap" style="padding: 40px;">
+                <span class="service-label" data-en="Bespoke Production" data-ar="إنتاج مخصص" style="color: #C5A059; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Bespoke Production</span>
+                <h3 class="service-title" data-en="Luxury Furniture" data-ar="أثاث فاخر" style="font-size: 28px; margin: 15px 0;">Luxury Furniture</h3>
+                <p class="service-desc" data-en="Custom Majlis and modern sets manufactured in China." data-ar="مجالس مخصصة وأطقم حديثة تصنع في الصين." style="color: #666; line-height: 1.8;">Custom Majlis and modern sets manufactured in China.</p>
+            </div>
+        </div>
+        <div class="service-block" style="flex: 1; min-width: 320px; display: flex; flex-direction: column; background: #fff; border: 1px solid #eee;">
+            <div class="service-img-wrap" style="height: 350px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200" class="service-img" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="service-text-wrap" style="padding: 40px;">
+                <span class="service-label" data-en="Direct Supply" data-ar="توريد مباشر" style="color: #C5A059; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Direct Supply</span>
+                <h3 class="service-title" data-en="Premium Marble" data-ar="رخام فاخر" style="font-size: 28px; margin: 15px 0;">Premium Marble</h3>
+                <p class="service-desc" data-en="The finest Italian and Chinese stone sourced directly." data-ar="أجود أنواع الحجر الإيطالي والصيني المورد مباشرة." style="color: #666; line-height: 1.8;">The finest Italian and Chinese stone sourced directly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <section id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow" data-en="Our Products" data-ar="منتجاتنا">Our Products</span>
+      <h2 class="section-head">
+        <span data-en="Material" data-ar="معرض">Material</span>
+        <em data-en=" Gallery" data-ar=" المواد"> Gallery</em>
+      </h2>
+    </div>
+
+    <div class="filter-tabs reveal">
+      <button class="filter-btn active" data-filter="all" onclick="filterGallery('all')" data-en="All" data-ar="الكل">All</button>
+      <button class="filter-btn" data-filter="marble" onclick="filterGallery('marble')" data-en="Marble & Stone" data-ar="رخام وحجر">Marble & Stone</button>
+      <button class="filter-btn" data-filter="furniture" onclick="filterGallery('furniture')" data-en="Furniture" data-ar="أثاث">Furniture</button>
+      <button class="filter-btn" data-filter="lighting" onclick="filterGallery('lighting')" data-en="Lighting" data-ar="إضاءة">Lighting</button>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item wide furniture" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Modern Sofa">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Bespoke Furniture" data-ar="أثاث مخصص">Bespoke Furniture</span>
+          <span class="gallery-caption-title" data-en="Modern Italian Sofa" data-ar="أريكة إيطالية حديثة">Modern Italian Sofa</span>
+        </div>
+      </div>
+      <div class="gallery-item furniture" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80" alt="Majlis Seating">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Majlis" data-ar="مجالس">Majlis</span>
+          <span class="gallery-caption-title" data-en="Royal Seating" data-ar="جلسة ملكية">Royal Seating</span>
+        </div>
+      </div>
+      <div class="gallery-item marble" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80" alt="Carrara Marble">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Marble Slab" data-ar="لوح رخام">Marble Slab</span>
+          <span class="gallery-caption-title" data-en="Italian Calacatta" data-ar="كالاكاتا إيطالي">Italian Calacatta</span>
+        </div>
+      </div>
+      <div class="gallery-item wide marble" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=1200&q=80" alt="Waterjet Pattern">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Stone Inlay" data-ar="تطعيم الحجر">Stone Inlay</span>
+          <span class="gallery-caption-title" data-en="Waterjet Medallion" data-ar="ميدالية بنفث الماء">Waterjet Medallion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer" style="background-color: #171615; color: #8A8A8A; padding: 80px 0 30px;">
+  <div class="wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; padding: 0 40px;">
+    <div>
+        <h2 style="color: #FFF; font-size: 28px; letter-spacing: 5px;" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</h2>
+        <p data-en="Your direct connection to China." data-ar="صلتك المباشرة بالصين.">Your direct connection to China.</p>
+    </div>
+    <div>
+        <h4 style="color: #C5A059; margin-bottom: 25px;" data-en="CONTACT" data-ar="اتصل بنا">CONTACT</h4>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <div class="contact-item" style="display: flex; gap: 10px;"><span style="color: #C5A059; font-weight: bold; width: 60px;" data-en="QATAR" data-ar="قطر">QATAR</span><span dir="ltr">+974 3167 1083</span></div>
+            <div class="contact-item" style="display: flex; gap: 10px;"><span style="color: #C5A059; font-weight: bold; width: 60px;" data-en="QATAR" data-ar="قطر">QATAR</span><span dir="ltr">+974 3000 3391</span></div>
+            <div class="contact-item" style="display: flex; gap: 10px;"><span style="color: #C5A059; font-weight: bold; width: 60px;" data-en="KSA" data-ar="السعودية">KSA</span><span dir="ltr">+966 51 046 3440</span></div>
+        </div>
+    </div>
+  </div>
+  <div dir="ltr" style="border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; text-align: center;">
+      <p style="font-size: 12px; color: #666; margin: 0;">© 2026 NAQI GULF CHINESE TRADING AND DECORATION</p>
+      <p style="font-size: 12px; color: #666; margin: 10px 0;">شركة نقي الخليج الصيني للتجارة والديكور</p>
+  </div>
+</footer>
+
+<div id="side-rail">
+  <a href="tel:+97431671083" class="rail-btn" title="Call">
+    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+  </a>
+  <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="rail-btn" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="mailto:info@naqigulf.com" class="rail-btn" title="Email">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" rel="noopener" class="rail-btn" title="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+  <a href="https://www.tiktok.com/@mrma_omar" target="_blank" rel="noopener" class="rail-btn" title="TikTok">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+  </a>
+</div>
+
+<div id="menu-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="menu-inner">
+    <div class="mob-nav-list">
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Materials" data-ar="المواد">Materials</span><span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx & Granite</a>
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Furniture" data-ar="الأثاث">Furniture</span><span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('furniture')" data-en="Majlis Seating" data-ar="جلسات مجالس">Majlis Seating</a>
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Lighting" data-ar="الإضاءة">Lighting</span><span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات ضخمة">Grand Chandeliers</a>
+          <a href="#gallery" class="mob-sub-link" onclick="closeMenu(); filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Fit-out" data-ar="التنفيذ">Fit-out</span><span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a href="#services" class="mob-sub-link" onclick="closeMenu();" data-en="Residential" data-ar="سكني">Residential</a>
+          <a href="#services" class="mob-sub-link" onclick="closeMenu();" data-en="Commercial" data-ar="تجاري">Commercial</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu(); filterGallery('all')">
+          <span data-en="Collections" data-ar="مجموعاتنا">Collections</span>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu(); scrollToId('intro')">
+          <span data-en="About Us" data-ar="من نحن">About Us</span>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu(); scrollToId('contact')">
+          <span data-en="Contact Us" data-ar="اتصل بنا">Contact Us</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mob-social-grid">
+      <a href="tel:+97431671083" class="mob-social-item" aria-label="Call">
+        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+      </a>
+      <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="mob-social-item" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="mailto:info@naqigulf.com" class="mob-social-item" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" rel="noopener" class="mob-social-item" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+
+    <div style="margin-top: 30px; margin-bottom: 30px; text-align: center;">
+      <div class="lang-group" style="justify-content: center;">
+        <button class="lang-btn active" onclick="setLang('en')" id="ml-en" style="font-size:14px;">EN</button>
+        <span style="color:var(--beige);font-size:16px;margin:0 10px;">/</span>
+        <button class="lang-btn" onclick="setLang('ar')" id="ml-ar" style="font-size:14px;">AR</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+'use strict';
+
+/* ── Language ── */
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  document.body.classList.toggle('ar', l === 'ar');
+  document.documentElement.setAttribute('lang', l);
+  document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+
+  document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + l);
+  });
+  document.querySelectorAll('option[data-en][data-ar]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + l);
+  });
+  document.querySelectorAll('[data-placeholder-en],[data-placeholder-ar]').forEach(el => {
+    const ph = el.getAttribute('data-placeholder-' + l);
+    if (ph) el.setAttribute('placeholder', ph);
+  });
+  ['nl-en','nl-ar','ml-en','ml-ar'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', id.endsWith(l));
+  });
+}
+
+/* ── Menu ── */
+const menuOverlay = document.getElementById('menu-overlay');
+const navBurger   = document.getElementById('nav-burger');
+let menuOpen = false;
+
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  menuOverlay.classList.toggle('open', menuOpen);
+  navBurger.classList.toggle('open', menuOpen);
+  navBurger.setAttribute('aria-expanded', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  menuOpen = false;
+  menuOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+function toggleMobMenu(element) {
+  const parentItem = element.parentElement;
+  const wasActive = parentItem.classList.contains('active');
+  document.querySelectorAll('.mob-nav-item').forEach(item => item.classList.remove('active'));
+  if (!wasActive) parentItem.classList.add('active');
+}
+
+/* ── Smooth scroll ── */
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── Dynamic Gallery Filter ── */
+function filterGallery(category) {
+  scrollToId('gallery');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-filter') === category) btn.classList.add('active');
+  });
+  const items = document.querySelectorAll('.gallery-item');
+  items.forEach(item => {
+    if (category === 'all' || item.classList.contains(category)) {
+      item.classList.remove('hide');
+    } else {
+      item.classList.add('hide');
+    }
+  });
+}
+
+/* ── Lightbox (画廊放大镜) ── */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(element) {
+  const imgSrc = element.querySelector('img').src;
+  lightboxImg.src = imgSrc;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ── Navbar scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Scroll reveal ── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ── Counter animation ── */
+function animateCount(el) {
+  const target  = parseInt(el.getAttribute('data-count'));
+  const suffix  = el.getAttribute('data-suffix') || '';
+  const dur     = 1200;
+  const step    = 14;
+  const inc     = target / (dur / step);
+  let cur = 0;
+  const t = setInterval(() => {
+    cur = Math.min(cur + inc, target);
+    el.textContent = (target >= 1000 ? Math.floor(cur).toLocaleString() : Math.floor(cur)) + suffix;
+    if (cur >= target) clearInterval(t);
+  }, step);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(animateCount);
+      cntObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+['intro'].forEach(id => {
+  const s = document.getElementById(id);
+  if (s) cntObs.observe(s);
+});
+
+/* ── Form ── */
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('form-btn');
+  const txt  = document.getElementById('form-btn-text');
+  const orig = txt.textContent;
+
+  if (!form.Full_Name.value.trim() || !form.WhatsApp.value.trim()) {
+    txt.textContent = lang === 'ar' ? '⚠ يرجى ملء الحقول المطلوبة' : '⚠ Please fill required fields';
+    setTimeout(() => { txt.textContent = orig; }, 3000);
+    return;
+  }
+  txt.textContent = lang === 'ar' ? '⏳ جاري الإرسال…' : '⏳ Sending…';
+  btn.disabled = true; btn.style.opacity = '0.7';
+  try {
+    const res = await fetch('https://formspree.io/f/xzdkdapw', {
+      method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      txt.textContent = lang === 'ar' ? '✓ تم الإرسال' : '✓ Sent Successfully';
+      form.reset();
+    } else throw new Error();
+  } catch {
+    txt.textContent = lang === 'ar' ? '❌ خطأ — تواصل عبر الواتساب' : '❌ Error — please WhatsApp us';
+  }
+  btn.disabled = false; btn.style.opacity = '';
+  setTimeout(() => { txt.textContent = orig; }, 6000);
+}
+</script>
+<script>
+  window.addEventListener('load', function() {
+    var video = document.querySelector('.hero-video');
+    if (video) {
+      video.muted = true; // 确保静音，否则浏览器禁止自动播放
+      video.play().catch(function(error) {
+        console.log("正在重试自动播放...");
+        // 针对某些移动端浏览器的二次尝试
+        video.play();
+      });
+    }
+  });
+</script>
+</body>
+</html>
