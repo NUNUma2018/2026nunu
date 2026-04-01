@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAQI Gulf — Premium Building Materials & Furniture Supply</title>
+<meta name="description" content="Direct supply of luxury furniture, marble, lighting and building materials from China to Qatar, Saudi Arabia, and UAE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════ */
+:root {
+  --gold:       #C5A059;
+  --gold-light: #D4B578;
+  --gold-dim:   rgba(197,160,89,0.25);
+  --ink:        #0E0D0B;
+  --ink-mid:    #1A1814;
+  --ink-soft:   #3A3630;
+  --stone:      #7A7060;
+  --cream:      #F5F1EA;
+  --cream-dark: #EDE7DC;
+  --white:      #FFFFFF;
+  --font-d:     'Cormorant', serif;
+  --font-b:     'Jost', sans-serif;
+  --font-a:     'Noto Naskh Arabic', serif;
+  --ease:       cubic-bezier(0.25,0.46,0.45,0.94);
+  --t:          0.4s;
+  --rail-w:     48px;
+}
+
+/* ═══════════════════════════════
+   RESET
+═══════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body {
+  font-family: var(--font-b);
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+img { max-width:100%; height:auto; display:block; }
+a { text-decoration:none; color:inherit; }
+button { cursor:pointer; border:none; background:none; font-family:inherit; }
+ul { list-style:none; }
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--ink-mid); }
+::-webkit-scrollbar-thumb { background:var(--gold); }
+
+/* ═══════════════════════════════
+   FIX #1 — LOGO VISIBILITY
+   Brand name always visible on both light & dark backgrounds
+═══════════════════════════════ */
+.brand-name {
+  font-family: var(--font-d);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--ink);           /* dark on transparent nav */
+  line-height: 1;
+  border: 1.5px solid currentColor;
+  padding: 6px 13px;
+  transition: color 0.3s, border-color 0.3s;
+}
+/* Once nav scrolled (dark bg) → force white logo */
+#nav.scrolled .brand-name {
+  color: var(--white);
+  border-color: var(--white);
+}
+/* On dark hero → force white immediately */
+body.hero-dark #nav:not(.scrolled) .brand-name {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.6);
+}
+.brand-sub {
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  text-align: center;
+  margin-top: 4px;
+  transition: color 0.3s;
+}
+#nav.scrolled .brand-sub { color: rgba(255,255,255,0.5); }
+body.hero-dark #nav:not(.scrolled) .brand-sub { color: rgba(255,255,255,0.5); }
+
+/* ═══════════════════════════════
+   ARABIC MODE
+═══════════════════════════════ */
+body.ar { direction:rtl; text-align:right; }
+/* Selective font override — only text, never numbers */
+body.ar p, body.ar h1, body.ar h2, body.ar h3, body.ar h4,
+body.ar label, body.ar li, body.ar .eyebrow, body.ar .body-text,
+body.ar .service-label, body.ar .service-title, body.ar .service-desc,
+body.ar .filter-btn, body.ar .gallery-caption-label, body.ar .gallery-caption-title,
+body.ar .intro-copy, body.ar .footer-tagline, body.ar .f-col li,
+body.ar .f-col h5, body.ar .contact-country, body.ar .contact-note,
+body.ar .bar-label, body.ar .mob-nav-item span, body.ar .mob-sub-link,
+body.ar .menu-item-label, body.ar .form-privacy, body.ar .form-sub,
+body.ar .section-head { font-family: var(--font-a); }
+body.ar .section-head { line-height: 1.4; }
+/* Numbers always LTR */
+.num-ltr, bdo[dir="ltr"], .phone-num {
+  direction: ltr !important;
+  unicode-bidi: bidi-override;
+  font-family: var(--font-b) !important;
+}
+input[type="tel"] { direction:ltr !important; font-family:var(--font-b) !important; }
+
+/* ═══════════════════════════════
+   CONTAINER
+═══════════════════════════════ */
+.wrap { max-width:1360px; margin:0 auto; padding:0 48px; }
+@media(max-width:768px) { .wrap { padding:0 24px; } }
+
+/* ═══════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════ */
+.eyebrow {
+  display: block;
+  font-family: var(--font-b);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+body.ar .eyebrow { letter-spacing: 1px; }
+
+.section-head {
+  font-family: var(--font-d);
+  font-size: clamp(30px, 5vw, 58px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--ink);
+}
+.section-head em { font-style:italic; color:var(--gold); }
+
+.body-text {
+  font-size: 14px; font-weight: 300;
+  line-height: 1.9; color: var(--stone);
+}
+
+.g-rule { display:flex; align-items:center; gap:12px; margin:24px 0; }
+.g-rule::before, .g-rule::after { content:''; flex:1; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
+.g-rule i { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); flex-shrink:0; display:block; }
+
+/* ═══════════════════════════════
+   NAVBAR
+═══════════════════════════════ */
+#nav {
+  position: fixed; top:0; left:0; right:0; z-index:600;
+  padding: 18px 0;
+  transition: all 0.4s ease;
+}
+#nav.scrolled {
+  background: rgba(14,13,11,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(197,160,89,0.18);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+}
+.nav-inner {
+  display: flex; align-items:center;
+  justify-content: space-between; gap:20px;
+}
+.nav-brand { cursor:pointer; }
+
+/* Desktop links */
+.nav-links {
+  display: flex; align-items:center; gap:4px;
+}
+.nav-item { position:relative; }
+.main-link {
+  display: inline-flex; align-items:center; gap:5px;
+  font-size: 9.5px; font-weight:500;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: var(--ink); padding: 8px 12px;
+  border-radius: 2px;
+  transition: color 0.3s;
+}
+#nav.scrolled .main-link { color: rgba(255,255,255,0.75); }
+body.hero-dark #nav:not(.scrolled) .main-link { color: rgba(255,255,255,0.8); }
+.main-link:hover { color: var(--gold) !important; }
+.main-link svg { opacity:0.5; transition:transform 0.3s; }
+.nav-item:hover .main-link svg { transform:rotate(180deg); }
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute; top:calc(100% + 8px); left:0;
+  min-width: 200px;
+  background: rgba(14,13,11,0.97);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(197,160,89,0.2);
+  padding: 8px 0;
+  opacity: 0; pointer-events:none;
+  transform: translateY(-6px);
+  transition: all 0.3s var(--ease);
+  z-index: 100;
+}
+body.ar .dropdown-menu { left:auto; right:0; }
+.nav-item:hover .dropdown-menu { opacity:1; pointer-events:all; transform:translateY(0); }
+.dropdown-item {
+  display: block; padding: 10px 20px;
+  font-size: 11px; font-weight:500;
+  letter-spacing: 1.5px; text-transform:uppercase;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s, background 0.2s;
+}
+body.ar .dropdown-item { font-family:var(--font-a); letter-spacing:0.5px; }
+.dropdown-item:hover { color:var(--gold); background:rgba(197,160,89,0.06); }
+
+/* Right section */
+.nav-right { display:flex; align-items:center; gap:14px; }
+.lang-group { display:flex; align-items:center; gap:3px; }
+.lang-btn {
+  font-size: 9px; font-weight:700; letter-spacing:1.5px;
+  color: var(--stone); padding:5px 9px;
+  border-radius: 2px; transition:all 0.3s;
+  font-family: var(--font-b) !important;
+}
+#nav.scrolled .lang-btn,
+body.hero-dark #nav:not(.scrolled) .lang-btn { color:rgba(255,255,255,0.5); }
+.lang-btn.active { color:var(--gold) !important; }
+.lang-btn:hover { color:var(--gold) !important; }
+
+/* Hamburger */
+.nav-burger {
+  display: flex; flex-direction:column; gap:5.5px;
+  padding:5px; cursor:pointer;
+}
+.nav-burger span {
+  display: block; width:24px; height:1.5px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+#nav.scrolled .nav-burger span,
+body.hero-dark #nav:not(.scrolled) .nav-burger span { background:var(--white); }
+.nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* ═══════════════════════════════
+   MENU OVERLAY
+═══════════════════════════════ */
+#menu-overlay {
+  position: fixed; inset:0; z-index:500;
+  background: var(--ink-mid);
+  transform: translateX(100%);
+  transition: transform 0.55s cubic-bezier(0.77,0,0.175,1);
+  overflow-y: auto;
+}
+#menu-overlay.open { transform:translateX(0); }
+body.ar #menu-overlay { transform:translateX(-100%); }
+body.ar #menu-overlay.open { transform:translateX(0); }
+
+.menu-inner {
+  min-height: 100vh;
+  padding: 100px 40px 120px;
+  position: relative;
+}
+@media(max-width:480px) { .menu-inner { padding:90px 24px 120px; } }
+
+/* topo texture */
+.menu-topo {
+  position: absolute; inset:0; pointer-events:none; opacity:0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cpath d='M350,80 Q480,200 350,320 Q220,440 350,560 Q480,680 350,800' stroke='%23C5A059' stroke-width='1.2' fill='none'/%3E%3Cpath d='M150,30 Q280,180 150,330 Q20,480 150,630' stroke='%23C5A059' stroke-width='1.2' fill='none'/%3E%3Cpath d='M550,30 Q680,180 550,330 Q420,480 550,630' stroke='%23C5A059' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+/* Mobile accordion nav */
+.mob-nav-list { margin-bottom:32px; }
+.mob-nav-item { border-bottom:1px solid rgba(197,160,89,0.12); }
+.mob-nav-header {
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 20px 0; cursor:pointer;
+  font-family: var(--font-d);
+  font-size: clamp(26px,5vw,40px);
+  font-weight: 300; letter-spacing:1px;
+  color: var(--white);
+  transition: color 0.3s;
+}
+body.ar .mob-nav-header { font-family:var(--font-a); font-size:clamp(22px,4.5vw,36px); }
+.mob-nav-header:hover, .mob-nav-item.active .mob-nav-header { color:var(--gold); }
+.mob-arrow {
+  font-size: 22px; color:var(--gold); opacity:0.5;
+  transition: transform 0.3s, opacity 0.3s;
+  flex-shrink: 0;
+}
+.mob-nav-item.active .mob-arrow { transform:rotate(90deg); opacity:1; }
+
+.mob-sub-menu {
+  max-height: 0; overflow:hidden;
+  transition: max-height 0.4s var(--ease);
+  padding-left: 20px;
+}
+body.ar .mob-sub-menu { padding-left:0; padding-right:20px; }
+.mob-nav-item.active .mob-sub-menu { max-height:300px; }
+.mob-sub-link {
+  display: block; padding:10px 0;
+  font-size: 11px; font-weight:500;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+}
+body.ar .mob-sub-link { font-family:var(--font-a); letter-spacing:0.5px; }
+.mob-sub-link:hover { color:var(--gold); }
+
+/* Social icons in menu */
+.mob-social-grid {
+  display: grid; grid-template-columns:repeat(4,1fr);
+  gap: 10px; margin-top:32px;
+}
+.mob-social-item {
+  /* FIX #2 — semi-transparent black with gold icon */
+  background: rgba(20,18,14,0.85) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(197,160,89,0.3);
+  border-radius: 4px;
+  height: 52px;
+  display: flex; align-items:center; justify-content:center;
+  color: var(--gold);
+  transition: all 0.3s;
+}
+.mob-social-item:hover { background:rgba(197,160,89,0.15) !important; border-color:var(--gold); }
+.mob-social-item svg { width:18px; height:18px; fill:currentColor; }
+
+.menu-bottom {
+  display: flex; flex-wrap:wrap; align-items:center;
+  justify-content: space-between; gap:16px;
+  margin-top:32px; padding-top:24px;
+  border-top:1px solid rgba(197,160,89,0.1);
+}
+
+/* ═══════════════════════════════
+   FIX #2 — SIDE RAIL (black-gold luxury)
+═══════════════════════════════ */
+#side-rail {
+  position: fixed; right:0; top:50%; z-index:400;
+  transform: translateY(-50%);
+  display: flex; flex-direction:column;
+}
+body.ar #side-rail { right:auto; left:0; }
+
+.rail-btn {
+  width: var(--rail-w); height: var(--rail-w);
+  display: flex; align-items:center; justify-content:center;
+  /* FIXED: semi-transparent black with gold icons */
+  background: rgba(20,18,14,0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(197,160,89,0.3) !important;
+  border-radius: 4px !important;
+  color: var(--gold) !important;
+  transition: all 0.35s !important;
+  margin-bottom: 4px;
+}
+.rail-btn:last-child { margin-bottom:0; }
+.rail-btn:hover {
+  background: rgba(197,160,89,0.18) !important;
+  border-color: var(--gold) !important;
+  transform: translateX(-4px);
+}
+body.ar .rail-btn:hover { transform:translateX(4px); }
+.rail-btn svg { width:16px; height:16px; fill:currentColor; }
+
+@media(max-width:768px) { #side-rail { display:none; } }
+
+/* ═══════════════════════════════
+   HERO — full screen, video-ready
+═══════════════════════════════ */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: var(--ink-mid);
+  display: flex; align-items:center; justify-content:center;
+}
+/* Responsive: no forced aspect-ratio that clips content */
+@media(max-width:768px) {
+  #hero { height:100svh !important; min-height:480px; }
+}
+#hero video, #hero .hero-fallback {
+  position: absolute; top:0; left:0;
+  width:100%; height:100%;
+  object-fit: cover;
+  filter: brightness(0.62);
+}
+.hero-overlay {
+  position: absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(14,13,11,0.25) 0%, rgba(14,13,11,0.1) 50%, rgba(14,13,11,0.6) 100%);
+}
+.hero-center {
+  position: relative; z-index:2;
+  text-align: center; padding:0 24px;
+}
+.hero-center h1 {
+  font-family: var(--font-d);
+  font-size: clamp(42px,9vw,96px);
+  font-weight: 300; letter-spacing:8px;
+  text-transform: uppercase;
+  color: var(--gold); line-height:1;
+}
+body.ar .hero-center h1 { font-family:var(--font-a); letter-spacing:2px; }
+.hero-sub {
+  font-family: var(--font-b);
+  font-size: clamp(11px,2.5vw,16px);
+  letter-spacing: 4px; text-transform:uppercase;
+  color: rgba(255,255,255,0.8);
+  margin-top: 14px;
+}
+body.ar .hero-sub { font-family:var(--font-a); letter-spacing:1px; }
+.hero-cta-row {
+  display: flex; flex-wrap:wrap; gap:14px;
+  justify-content:center; margin-top:36px;
+}
+
+/* ═══════════════════════════════
+   BOTTOM BAR
+═══════════════════════════════ */
+#bottom-bar {
+  position: fixed; bottom:0; left:0; right:0; z-index:500;
+  display: grid; grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 -4px 28px rgba(0,0,0,0.25);
+}
+.bar-btn {
+  display: flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:5px; padding:13px 12px;
+  font-family: var(--font-b);
+  font-size: 8.5px; font-weight:600;
+  letter-spacing: 1.5px; text-transform:uppercase;
+  transition: all 0.3s; cursor:pointer;
+}
+.bar-label { font-size:8.5px; }
+body.ar .bar-btn { font-family:var(--font-a); }
+.bar-btn svg { width:19px; height:19px; }
+.bar-btn:nth-child(1) { background:var(--gold); color:var(--ink); }
+.bar-btn:nth-child(1):hover { background:var(--gold-light); }
+.bar-btn:nth-child(2) { background:#111; color:var(--white); }
+.bar-btn:nth-child(2):hover { background:#222; }
+.bar-btn:nth-child(3) { background:#25D366; color:var(--white); }
+.bar-btn:nth-child(3):hover { background:#1ebe5d; }
+
+/* ═══════════════════════════════
+   BUTTONS
+═══════════════════════════════ */
+.btn {
+  display: inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family: var(--font-b); font-size:10px; font-weight:500;
+  letter-spacing:3px; text-transform:uppercase;
+  padding: 15px 36px; white-space:nowrap;
+  transition: all var(--t) var(--ease);
+}
+body.ar .btn { letter-spacing:1px; flex-direction:row-reverse; font-family:var(--font-a); }
+.btn-gold { background:var(--gold); color:var(--ink); }
+.btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); }
+.btn-outline { border:1px solid rgba(255,255,255,0.5); color:var(--white); }
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+.btn-dark { background:var(--ink); color:var(--white); }
+.btn-dark:hover { background:var(--ink-soft); transform:translateY(-2px); }
+.btn-wa {
+  display: inline-flex; align-items:center; gap:10px;
+  background: #25D366; color:#fff;
+  font-family:var(--font-b); font-size:10px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase;
+  padding: 15px 32px; border-radius:2px;
+  transition: all var(--t) var(--ease);
+}
+.btn-wa svg { width:17px; height:17px; fill:#fff; flex-shrink:0; }
+.btn-wa:hover { background:#1ebe5d; transform:translateY(-2px); }
+body.ar .btn-wa { flex-direction:row-reverse; font-family:var(--font-a); }
+
+/* ═══════════════════════════════
+   FIX #3 — INTRO SECTION
+   Dark background + full bilingual copy
+═══════════════════════════════ */
+#intro {
+  padding: 110px 0;
+  /* sophisticated near-black, like major luxury brands */
+  background: #0B0A08;
+  text-align: center;
+  border-bottom: 1px solid rgba(197,160,89,0.1);
+  position: relative; overflow:hidden;
+}
+/* Subtle gold radial glow */
+#intro::before {
+  content:'';
+  position: absolute; top:50%; left:50%;
+  transform: translate(-50%,-50%);
+  width: 700px; height:400px;
+  background: radial-gradient(ellipse,rgba(197,160,89,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+#intro .section-head { color:var(--white); }
+#intro .body-text { color:rgba(255,255,255,0.5); max-width:760px; margin:18px auto 0; font-size:15px; }
+.intro-kpi {
+  display: grid; grid-template-columns:repeat(3,1fr);
+  gap: 1px; background:rgba(197,160,89,0.12);
+  border:1px solid rgba(197,160,89,0.12);
+  max-width: 640px; margin: 52px auto 0;
+}
+.kpi-cell { background:#0B0A08; padding:36px 20px; text-align:center; }
+.kpi-num {
+  font-family: var(--font-d); font-size:52px;
+  font-weight:300; color:var(--gold); line-height:1;
+  direction:ltr !important; font-family:var(--font-d) !important;
+}
+.kpi-lbl {
+  font-size: 9.5px; font-weight:500;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: rgba(255,255,255,0.4); margin-top:8px;
+}
+body.ar .kpi-lbl { letter-spacing:0.5px; font-family:var(--font-a); }
+
+/* ═══════════════════════════════
+   FIX #4 — SERVICES
+   Zero borders, zero gaps, perfect image alignment
+═══════════════════════════════ */
+#services { background:var(--cream); }
+
+.services-head {
+  text-align: center; padding:80px 0 60px;
+}
+.services-head .section-head { color:var(--ink); }
+
+/* Two-column card grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0;          /* NO gaps — seamless grid */
+}
+@media(max-width:768px) { .services-grid { grid-template-columns:1fr; } }
+
+.svc-card {
+  position: relative;
+  background: var(--white);
+  overflow: hidden;
+  /* NO border, NO box-shadow that creates lines */
+  border: none;
+  outline: none;
+  display: flex; flex-direction:column;
+}
+/* Thin separator only between cells */
+.svc-card:nth-child(odd) { border-right:1px solid var(--cream-dark); }
+.svc-card:nth-child(n+3) { border-top:1px solid var(--cream-dark); }
+@media(max-width:768px) {
+  .svc-card:nth-child(odd) { border-right:none; }
+  .svc-card:nth-child(n+2) { border-top:1px solid var(--cream-dark); }
+}
+
+/* FIX: image wrapper — precise, no padding/margin leak */
+.svc-img-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+  /* CRITICAL: display:block eliminates inline whitespace */
+  display: block;
+  line-height: 0;
+  font-size: 0;
+}
+.svc-img {
+  width: 100%; height:100%;
+  object-fit: cover;
+  display: block;          /* eliminates bottom whitespace */
+  transition: transform 0.8s var(--ease);
+  filter: brightness(0.9);
+}
+.svc-card:hover .svc-img { transform:scale(1.05); filter:brightness(0.82); }
+
+/* Text block */
+.svc-body {
+  padding: 36px 40px 40px;
+  flex: 1;
+}
+@media(max-width:480px) { .svc-body { padding:28px 24px 32px; } }
+
+.svc-tag {
+  font-family: var(--font-b);
+  font-size: 9.5px; font-weight:600;
+  letter-spacing: 3px; text-transform:uppercase;
+  color: var(--gold); margin-bottom:14px;
+  display: block;
+}
+body.ar .svc-tag { letter-spacing:0.5px; font-family:var(--font-a); }
+
+.svc-title {
+  font-family: var(--font-d);
+  font-size: clamp(24px,3vw,36px);
+  font-weight: 300; line-height:1.15;
+  color: var(--ink); margin-bottom:14px;
+}
+body.ar .svc-title { font-family:var(--font-a); line-height:1.4; }
+.svc-title em { font-style:italic; color:var(--gold); }
+
+.svc-desc {
+  font-size: 13.5px; font-weight:300;
+  line-height: 1.85; color:var(--stone);
+  margin-bottom: 28px;
+}
+body.ar .svc-desc { font-family:var(--font-a); }
+
+.svc-link {
+  display: inline-flex; align-items:center; gap:10px;
+  font-size: 9.5px; font-weight:500;
+  letter-spacing: 2.5px; text-transform:uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  width: fit-content;
+  transition: all 0.3s;
+}
+.svc-link:hover { color:var(--gold); border-color:var(--gold); }
+body.ar .svc-link { letter-spacing:0.5px; flex-direction:row-reverse; font-family:var(--font-a); }
+
+/* ═══════════════════════════════
+   FILTERABLE GALLERY
+═══════════════════════════════ */
+#gallery { padding:100px 0; background:var(--white); }
+.gallery-head { text-align:center; margin-bottom:48px; }
+
+.filter-tabs {
+  display: flex; flex-wrap:wrap;
+  justify-content: center; gap:6px;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  font-family: var(--font-b);
+  font-size: 9.5px; font-weight:500;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: var(--stone); padding:8px 22px;
+  border: 1px solid var(--cream-dark);
+  border-radius: 2px;
+  transition: all 0.3s; cursor:pointer;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--gold); color:var(--white);
+  border-color: var(--gold);
+}
+
+/* Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+@media(max-width:900px) { .gallery-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px) { .gallery-grid { grid-template-columns:1fr; } }
+
+.gallery-item {
+  position: relative; overflow:hidden;
+  border-radius: 6px; cursor:pointer;
+  aspect-ratio: 4/5;
+  background: var(--cream-dark);
+}
+.gallery-item.wide { aspect-ratio:16/9; }
+@media(max-width:480px) { .gallery-item.wide { aspect-ratio:4/5; } }
+
+.gallery-img {
+  width:100%; height:100%; object-fit:cover;
+  transition: transform 0.7s var(--ease), filter 0.5s;
+  filter: brightness(0.85);
+}
+.gallery-item:hover .gallery-img { transform:scale(1.07); filter:brightness(0.7); }
+
+.gallery-caption {
+  position: absolute; inset:0;
+  display: flex; flex-direction:column;
+  justify-content: flex-end; padding:22px 20px;
+  background: linear-gradient(to top, rgba(14,13,11,0.75) 0%, transparent 60%);
+  opacity:0; transition:opacity 0.35s;
+}
+.gallery-item:hover .gallery-caption { opacity:1; }
+.gallery-caption-label {
+  font-size: 9px; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom: 5px;
+}
+body.ar .gallery-caption-label { font-family:var(--font-a); letter-spacing:0.5px; }
+.gallery-caption-title {
+  font-family: var(--font-d);
+  font-size: 20px; font-weight:300; color:var(--white);
+}
+body.ar .gallery-caption-title { font-family:var(--font-a); }
+
+/* Hide filtered items */
+.gallery-item.hide { display:none; }
+
+/* Lightbox */
+#lightbox {
+  position: fixed; inset:0; z-index:1000;
+  background: rgba(10,9,7,0.96);
+  display: flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.35s;
+}
+#lightbox.active { opacity:1; pointer-events:all; }
+#lightbox-img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:4px; }
+#lightbox-close {
+  position: absolute; top:24px; right:28px;
+  font-size: 32px; color:var(--gold); cursor:pointer;
+  background: none; border:none; line-height:1;
+  transition: transform 0.3s;
+}
+#lightbox-close:hover { transform:rotate(90deg); }
+
+/* ═══════════════════════════════
+   TRUST STRIP
+═══════════════════════════════ */
+#trust {
+  padding: 80px 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(197,160,89,0.1);
+}
+.trust-row {
+  display: grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:rgba(197,160,89,0.1);
+  border: 1px solid rgba(197,160,89,0.1);
+}
+@media(max-width:768px) { .trust-row { grid-template-columns:repeat(2,1fr); } }
+.trust-cell {
+  background: var(--ink-mid); padding:40px 24px;
+  text-align:center; transition:background 0.3s;
+}
+.trust-cell:hover { background:rgba(197,160,89,0.05); }
+.trust-icon { font-size:26px; margin-bottom:12px; }
+.trust-num {
+  font-family: var(--font-d) !important;
+  font-size: 48px; font-weight:300;
+  color: var(--gold); line-height:1;
+  direction:ltr !important;
+}
+.trust-lbl {
+  font-size: 9.5px; font-weight:500;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: rgba(255,255,255,0.35); margin-top:8px;
+}
+body.ar .trust-lbl { letter-spacing:0.5px; font-family:var(--font-a); }
+
+/* ═══════════════════════════════
+   CONTACT FORM
+═══════════════════════════════ */
+#contact { padding:100px 0 130px; background:var(--cream); }
+.contact-grid {
+  display: grid; grid-template-columns:1fr 1fr;
+  gap:72px; align-items:start;
+}
+@media(max-width:900px) { .contact-grid { grid-template-columns:1fr; gap:52px; } }
+
+.contact-offices { display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+.c-office {
+  display: flex; align-items:flex-start; gap:16px;
+  padding: 20px; border:1px solid var(--cream-dark);
+  background: var(--white);
+  transition: border-color 0.3s;
+}
+.c-office:hover { border-color:var(--gold); }
+body.ar .c-office { flex-direction:row-reverse; }
+.c-flag { font-size:22px; flex-shrink:0; margin-top:2px; }
+.contact-country {
+  font-size: 9.5px; font-weight:700;
+  letter-spacing: 2px; text-transform:uppercase;
+  color: var(--gold); margin-bottom:4px;
+}
+.contact-num {
+  font-size: 15px; font-weight:400;
+  color: var(--ink);
+  display: block;
+  /* ALWAYS LTR for phone numbers */
+  direction: ltr !important;
+  unicode-bidi: bidi-override;
+  font-family: var(--font-b) !important;
+}
+.contact-note { font-size:11.5px; color:var(--stone); margin-top:2px; }
+body.ar .contact-note { font-family:var(--font-a); }
+
+.form-panel {
+  background: var(--white); border:1px solid var(--cream-dark);
+  padding: 44px;
+}
+@media(max-width:480px) { .form-panel { padding:28px 20px; } }
+
+.form-panel-title {
+  font-family: var(--font-d);
+  font-size: 26px; font-weight:400; color:var(--ink);
+  text-align:center; margin-bottom:6px;
+}
+body.ar .form-panel-title { font-family:var(--font-a); }
+.form-sub {
+  font-size: 11px; color:var(--stone);
+  text-align:center; margin-bottom:28px; letter-spacing:0.5px;
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:540px) { .form-row { grid-template-columns:1fr; } }
+
+.fg { margin-bottom:14px; }
+.fg label {
+  display:block; font-size:9.5px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:7px;
+}
+body.ar .fg label { letter-spacing:0.5px; font-family:var(--font-a); }
+.fg input, .fg select, .fg textarea {
+  width:100%; background:var(--cream);
+  border:1px solid var(--cream-dark);
+  color:var(--ink); font-family:var(--font-b);
+  font-size:13.5px; padding:13px 15px;
+  outline:none; border-radius:2px;
+  transition:border-color 0.3s;
+  appearance:none; -webkit-appearance:none;
+  box-sizing:border-box;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color:var(--gold); background:var(--white);
+}
+.fg input::placeholder, .fg textarea::placeholder { color:rgba(122,112,96,0.6); }
+.fg select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C5A059' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 15px center;
+  padding-right:40px; color:var(--ink);
+}
+body.ar .fg select { background-position:left 15px center; padding-right:15px; padding-left:40px; }
+.fg select option { background:var(--white); }
+.fg textarea { resize:vertical; min-height:110px; line-height:1.7; }
+.form-btn { width:100%; padding:17px; font-size:10px; margin-top:6px; cursor:pointer; }
+.form-privacy {
+  text-align:center; font-size:10.5px;
+  color:var(--stone); margin-top:12px;
+}
+
+/* ═══════════════════════════════
+   FIX #5 — FOOTER (full bilingual)
+═══════════════════════════════ */
+#footer {
+  background: var(--ink-mid);
+  padding: 72px 0 120px;  /* 120 = clearance for bottom bar */
+  border-top: 1px solid rgba(197,160,89,0.12);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 56px; margin-bottom:52px;
+}
+@media(max-width:900px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:580px) { .footer-grid { grid-template-columns:1fr; gap:40px; } }
+
+.f-brand {}
+.f-brand-name {
+  font-family: var(--font-d);
+  font-size: 22px; font-weight:600;
+  letter-spacing:6px; text-transform:uppercase;
+  color: var(--white); display:inline-block;
+  border: 1px solid rgba(197,160,89,0.4);
+  padding: 7px 14px; margin-bottom:8px;
+}
+.f-brand-sub {
+  font-size: 7.5px; font-weight:600;
+  letter-spacing: 3px; text-transform:uppercase;
+  color: var(--stone); margin-bottom:18px;
+}
+.footer-tagline {
+  font-size: 13px; font-weight:300;
+  color: rgba(255,255,255,0.38); line-height:1.85;
+  max-width: 290px;
+}
+body.ar .footer-tagline { font-family:var(--font-a); }
+.f-socials { display:flex; gap:8px; margin-top:22px; }
+.f-soc {
+  width:36px; height:36px;
+  border:1px solid rgba(197,160,89,0.22);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--stone); transition:all 0.3s;
+}
+.f-soc:hover { background:var(--gold); border-color:var(--gold); color:var(--white); }
+.f-soc svg { width:14px; height:14px; fill:currentColor; }
+
+/* FIX #5 — footer columns fully bilingual */
+.f-col h5 {
+  font-size: 9.5px; font-weight:700;
+  letter-spacing: 3px; text-transform:uppercase;
+  color: var(--gold); margin-bottom:18px;
+}
+body.ar .f-col h5 { letter-spacing:0.5px; font-family:var(--font-a); }
+.f-col ul { display:flex; flex-direction:column; gap:10px; }
+.f-col li {
+  font-size: 13px; font-weight:300;
+  color: rgba(255,255,255,0.45);
+  cursor:pointer; transition:color 0.3s;
+}
+body.ar .f-col li { font-family:var(--font-a); }
+.f-col li:hover { color:var(--gold); }
+
+/* Contact items in footer */
+.f-contact-item {
+  display: flex; align-items:flex-start; gap:10px;
+  margin-bottom: 14px;
+}
+body.ar .f-contact-item { flex-direction:row-reverse; }
+.f-contact-label {
+  font-size: 9px; font-weight:700;
+  letter-spacing: 1.5px; text-transform:uppercase;
+  color: var(--gold); width:44px; flex-shrink:0;
+  padding-top: 2px;
+}
+body.ar .f-contact-label { font-family:var(--font-a); letter-spacing:0.5px; }
+/* FIX #5 — phone numbers always LTR regardless of RTL mode */
+.f-phone {
+  font-size: 13.5px; font-weight:400;
+  color: rgba(255,255,255,0.65);
+  /* Force LTR for all phone numbers */
+  direction: ltr !important;
+  unicode-bidi: bidi-override;
+  font-family: var(--font-b) !important;
+  display: block;
+}
+.f-phone-note {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.28);
+  margin-top: 2px;
+  display: block;
+}
+body.ar .f-phone-note { font-family:var(--font-a); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(197,160,89,0.08);
+  padding-top: 24px;
+  display: flex; flex-wrap:wrap;
+  justify-content:space-between; align-items:center; gap:10px;
+}
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.6;
+}
+body.ar .footer-copy { font-family:var(--font-a); }
+.footer-copy-ar {
+  font-family: var(--font-a);
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  direction: rtl;
+}
+
+/* ═══════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════ */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-d1{transition-delay:.1s;} .reveal-d2{transition-delay:.2s;}
+.reveal-d3{transition-delay:.3s;} .reveal-d4{transition-delay:.4s;}
+
+/* ═══════════════════════════════
+   DESKTOP HIDE HAMBURGER
+═══════════════════════════════ */
+@media(min-width:1025px) {
+  .nav-links { display:flex !important; }
+}
+@media(max-width:1024px) {
+  .nav-links { display:none !important; }
+}
+</style>
+</head>
+
+<!-- hero-dark class means logo/links need to be white on transparent nav -->
+<body class="hero-dark">
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Gallery">
+</div>
+
+<!-- ═══ MENU OVERLAY ═══ -->
+<div id="menu-overlay" role="dialog" aria-modal="true">
+  <div class="menu-topo"></div>
+  <div class="menu-inner">
+
+    <div class="mob-nav-list">
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Materials" data-ar="المواد">Materials</span>
+          <span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx &amp; Granite</a>
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Furniture" data-ar="الأثاث">Furniture</span>
+          <span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('furniture')" data-en="Bespoke Majlis" data-ar="مجالس مخصصة">Bespoke Majlis</a>
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Lighting" data-ar="الإضاءة">Lighting</span>
+          <span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات فاخرة">Grand Chandeliers</a>
+          <a class="mob-sub-link" href="#gallery" onclick="closeMenu();filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="toggleMobMenu(this)">
+          <span data-en="Fit-out" data-ar="التنفيذ">Fit-out</span>
+          <span class="mob-arrow">›</span>
+        </div>
+        <div class="mob-sub-menu">
+          <a class="mob-sub-link" href="#services" onclick="closeMenu()" data-en="Residential" data-ar="سكني">Residential</a>
+          <a class="mob-sub-link" href="#services" onclick="closeMenu()" data-en="Commercial" data-ar="تجاري">Commercial</a>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu();filterGallery('all');scrollToId('gallery')">
+          <span data-en="Collections" data-ar="مجموعاتنا">Collections</span>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu();scrollToId('intro')">
+          <span data-en="About Us" data-ar="من نحن">About Us</span>
+        </div>
+      </div>
+      <div class="mob-nav-item">
+        <div class="mob-nav-header" onclick="closeMenu();scrollToId('contact')">
+          <span data-en="Contact" data-ar="اتصل بنا">Contact</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIX #2: semi-transparent black + gold icons -->
+    <div class="mob-social-grid">
+      <a href="tel:+97431671083" class="mob-social-item" aria-label="Call">
+        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+      </a>
+      <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="mob-social-item" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.096.543 4.1 1.502 5.849L0 24l6.302-1.649A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      </a>
+      <a href="mailto:info@naqigulf.com" class="mob-social-item" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" rel="noopener" class="mob-social-item" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+
+    <div class="menu-bottom">
+      <div class="lang-group">
+        <button class="lang-btn active" onclick="setLang('en')" id="ml-en" style="color:var(--gold);">EN</button>
+        <span style="color:rgba(255,255,255,0.2);font-size:13px;">/</span>
+        <button class="lang-btn" onclick="setLang('ar')" id="ml-ar">AR</button>
+      </div>
+      <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="btn-wa" style="font-size:9px;padding:11px 22px;">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.096.543 4.1 1.502 5.849L0 24l6.302-1.649A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        <span data-en="WhatsApp Us" data-ar="تواصل معنا">WhatsApp Us</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav" role="navigation">
+  <div class="wrap">
+    <div class="nav-inner">
+
+      <!-- FIX #1: Logo always visible -->
+      <div class="nav-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div>
+        <div class="brand-sub" data-en="MATERIAL SUPPLY" data-ar="توريد المواد">MATERIAL SUPPLY</div>
+      </div>
+
+      <!-- Desktop links with dropdowns -->
+      <ul class="nav-links" id="desktop-links">
+        <li class="nav-item">
+          <a href="#services" class="main-link">
+            <span data-en="Materials" data-ar="المواد">Materials</span>
+            <svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('marble')" data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</a>
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('stone')" data-en="Onyx & Granite" data-ar="أونيكس وجرانيت">Onyx &amp; Granite</a>
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('tiles')" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#services" class="main-link">
+            <span data-en="Furniture" data-ar="الأثاث">Furniture</span>
+            <svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('furniture')" data-en="Bespoke Majlis" data-ar="مجالس مخصصة">Bespoke Majlis</a>
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('furniture')" data-en="Modern Sofas" data-ar="أرائك حديثة">Modern Sofas</a>
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('furniture')" data-en="Bedroom Sets" data-ar="أطقم غرف نوم">Bedroom Sets</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#gallery" class="main-link">
+            <span data-en="Lighting" data-ar="الإضاءة">Lighting</span>
+            <svg width="10" height="6" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.8"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('lighting')" data-en="Grand Chandeliers" data-ar="ثريات فاخرة">Grand Chandeliers</a>
+            <a class="dropdown-item" href="#gallery" onclick="filterGallery('lighting')" data-en="Wall Sconces" data-ar="شمعدانات حائط">Wall Sconces</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#gallery" class="main-link" onclick="filterGallery('all')" data-en="Collections" data-ar="مجموعاتنا">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a href="#intro" class="main-link" data-en="About" data-ar="من نحن">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="main-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-group" id="nav-lang">
+          <button class="lang-btn active" onclick="setLang('en')" id="nl-en">EN</button>
+          <span style="color:rgba(122,112,96,0.5);font-size:12px;">/</span>
+          <button class="lang-btn" onclick="setLang('ar')" id="nl-ar">AR</button>
+        </div>
+        <div class="nav-burger" id="nav-burger" onclick="toggleMenu()" aria-expanded="false" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ SIDE RAIL (FIX #2) ═══ -->
+<div id="side-rail" role="complementary">
+  <a href="tel:+97431671083" class="rail-btn" title="Call Qatar">
+    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+  </a>
+  <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="rail-btn" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.096.543 4.1 1.502 5.849L0 24l6.302-1.649A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+  </a>
+  <a href="mailto:info@naqigulf.com" class="rail-btn" title="Email">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" rel="noopener" class="rail-btn" title="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+  <a href="https://www.tiktok.com/@mrma_omar" target="_blank" rel="noopener" class="rail-btn" title="TikTok">
+    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+  </a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <!-- Video background — falls back to image if no video file -->
+  <video autoplay muted loop playsinline id="hero-video"
+         poster="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=75">
+    <source src="hero-bg.mp4" type="video/mp4">
+    <!-- fallback: hide video, show image -->
+  </video>
+  <!-- Fallback image shown if video can't load -->
+  <img class="hero-fallback" id="hero-fallback"
+       src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=75"
+       alt="Luxury villa"
+       style="display:none; position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.6);">
+  <div class="hero-overlay"></div>
+  <div class="hero-center">
+    <h1 data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</h1>
+    <p class="hero-sub" data-en="Premium Interior & Materials Supply" data-ar="توريد المواد الفاخرة والتصميم الداخلي">Premium Interior &amp; Materials Supply</p>
+    <div class="hero-cta-row">
+      <a href="#gallery" class="btn btn-gold">
+        <span data-en="View Collections" data-ar="عرض المجموعات">View Collections</span>
+      </a>
+      <a href="https://wa.me/97431671083?text=Hello%20NAQI%20Gulf" target="_blank" rel="noopener" class="btn btn-outline">
+        <span data-en="WhatsApp Us" data-ar="تواصل عبر الواتساب">WhatsApp Us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTRO (FIX #3 — Dark bg + full Arabic) ═══ -->
+<section id="intro">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow" data-en="Why NAQI Gulf" data-ar="لماذا نقي الخليج">Why NAQI Gulf</span>
+      <h2 class="section-head"
+          data-en="The Gulf's Direct Link to <em>China's Finest</em>"
+          data-ar="بوابتك المباشرة نحو <em>الفخامة الصينية</em>">
+        The Gulf's Direct Link to <em>China's Finest</em>
+      </h2>
+      <!-- FIX #3: Full professional Arabic copy -->
+      <p class="body-text intro-copy"
+         data-en="We connect Gulf projects directly to China's most prestigious manufacturers — cutting out middlemen to deliver premium marble, bespoke furniture, crystal lighting, and luxury fit-out materials at unrivalled value. Factory-direct quality. Gulf-delivered speed."
+         data-ar="نربط مشاريع الخليج مباشرةً بأرقى المصنّعين في الصين، متجاوزين الوسطاء لتوفير الرخام الفاخر، والأثاث المصنوع يدوياً، والإضاءة الكريستالية، ومواد التشطيب الراقية بقيمة لا يضاهيها أحد. جودة مباشرة من المصنع. توصيل سريع إلى الخليج.">
+        We connect Gulf projects directly to China's most prestigious manufacturers — cutting out middlemen to deliver premium marble, bespoke furniture, crystal lighting, and luxury fit-out materials at unrivalled value. Factory-direct quality. Gulf-delivered speed.
+      </p>
+    </div>
+    <div class="intro-kpi reveal reveal-d2">
+      <div class="kpi-cell">
+        <div class="kpi-num" data-count="15" data-suffix="+">0+</div>
+        <div class="kpi-lbl" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-num" data-count="200" data-suffix="+">0+</div>
+        <div class="kpi-lbl" data-en="Projects Delivered" data-ar="مشروع منجز">Projects Delivered</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-num" data-count="1200" data-suffix="+">0+</div>
+        <div class="kpi-lbl" data-en="Material Lines" data-ar="خط إنتاج">Material Lines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES (FIX #4 — zero borders/gaps/blank space) ═══ -->
+<section id="services">
+  <div class="services-head reveal">
+    <span class="eyebrow" data-en="What We Supply" data-ar="ما نوفره">What We Supply</span>
+    <h2 class="section-head"
+        data-en="Four Pillars of <em>Luxury Supply</em>"
+        data-ar="أربع ركائز من <em>التوريد الفاخر</em>">
+      Four Pillars of <em>Luxury Supply</em>
+    </h2>
+  </div>
+
+  <!-- FIX #4: seamless grid, object-fit:cover images, zero inline gaps -->
+  <div class="services-grid reveal">
+
+    <!-- Card 1 -->
+    <div class="svc-card">
+      <div class="svc-img-box">
+        <img class="svc-img" loading="lazy"
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80"
+          alt="Luxury Furniture">
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag" data-en="Bespoke Production" data-ar="إنتاج مخصص">Bespoke Production</span>
+        <h3 class="svc-title">
+          <em data-en="Luxury" data-ar="أثاث">Luxury</em>
+          <span data-en=" Furniture" data-ar=" فاخر"> Furniture</span>
+        </h3>
+        <p class="svc-desc"
+           data-en="Custom Majlis seating, modern living sets, and bedroom collections — manufactured to your exact specifications in China's finest factories."
+           data-ar="جلسات مجالس مخصصة، وطقم معيشة حديثة، ومجموعات غرف نوم — تُصنَّع وفق مواصفاتك الدقيقة في أفضل مصانع الصين.">
+          Custom Majlis seating, modern living sets, and bedroom collections — manufactured to your exact specifications in China's finest factories.
+        </p>
+        <a href="#contact" class="svc-link">
+          <span data-en="Request Samples" data-ar="طلب عينات">Request Samples</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="svc-card">
+      <div class="svc-img-box">
+        <img class="svc-img" loading="lazy"
+          src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=900&q=80"
+          alt="Premium Marble">
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag" data-en="Direct Supply" data-ar="توريد مباشر">Direct Supply</span>
+        <h3 class="svc-title">
+          <em data-en="Premium" data-ar="رخام">Premium</em>
+          <span data-en=" Marble & Stone" data-ar=" فاخر وحجر"> Marble &amp; Stone</span>
+        </h3>
+        <p class="svc-desc"
+           data-en="Carrara, Calacatta, Statuario — the finest Italian and Chinese stone, sourced directly from quarry-linked factories. Slabs, tiles, and custom waterjet medallions."
+           data-ar="كارارا، كالاكاتا، ستاتواريو — أجود أنواع الحجر الإيطالي والصيني، مصدرها مباشرة من مصانع مرتبطة بالمحاجر. بلاطات وألواح ومعدلات بنفث الماء مخصصة.">
+          Carrara, Calacatta, Statuario — the finest Italian and Chinese stone, sourced directly from quarry-linked factories. Slabs, tiles, and custom waterjet medallions.
+        </p>
+        <a href="#contact" class="svc-link">
+          <span data-en="Request Catalogue" data-ar="طلب الكتالوج">Request Catalogue</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="svc-card">
+      <div class="svc-img-box">
+        <img class="svc-img" loading="lazy"
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
+          alt="Crystal Chandeliers">
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag" data-en="Crystal & LED" data-ar="كريستال وLED">Crystal &amp; LED</span>
+        <h3 class="svc-title">
+          <em data-en="Grand" data-ar="إضاءة">Grand</em>
+          <span data-en=" Lighting" data-ar=" فاخرة"> Lighting</span>
+        </h3>
+        <p class="svc-desc"
+           data-en="Palace-scale crystal chandeliers, architectural LED systems, and custom wall sconces — all manufactured with Swarovski-grade crystal at accessible pricing."
+           data-ar="ثريات كريستالية بمقاييس القصور، وأنظمة LED معمارية، وشمعدانات حائط مخصصة — كلها مصنوعة بكريستال على مستوى سواروفسكي بأسعار منافسة.">
+          Palace-scale crystal chandeliers, architectural LED systems, and custom wall sconces — all manufactured with Swarovski-grade crystal at accessible pricing.
+        </p>
+        <a href="#contact" class="svc-link">
+          <span data-en="Request Samples" data-ar="طلب عينات">Request Samples</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="svc-card">
+      <div class="svc-img-box">
+        <img class="svc-img" loading="lazy"
+          src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=900&q=80"
+          alt="Fit-out & Wallcoverings">
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag" data-en="Full Fit-Out" data-ar="تشطيب كامل">Full Fit-Out</span>
+        <h3 class="svc-title">
+          <em data-en="Wallcoverings" data-ar="أغطية الجدران">Wallcoverings</em>
+          <span data-en=" & Fit-Out" data-ar=" والتشطيب"> &amp; Fit-Out</span>
+        </h3>
+        <p class="svc-desc"
+           data-en="Silk wallpapers, decorative plaster, custom millwork, and complete fit-out packages — supplied and installed across Qatar, Saudi Arabia, and UAE."
+           data-ar="ورق حائط حريري، وجص زخرفي، ونجارة مخصصة، وحزم تشطيب كاملة — توريد وتركيب في قطر والسعودية والإمارات.">
+          Silk wallpapers, decorative plaster, custom millwork, and complete fit-out packages — supplied and installed across Qatar, Saudi Arabia, and UAE.
+        </p>
+        <a href="#contact" class="svc-link">
+          <span data-en="Get a Quote" data-ar="احصل على عرض">Get a Quote</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow" data-en="Our Collections" data-ar="مجموعاتنا">Our Collections</span>
+      <h2 class="section-head">
+        <span data-en="Material" data-ar="معرض">Material</span>
+        <em data-en=" Gallery" data-ar=" المواد"> Gallery</em>
+      </h2>
+    </div>
+    <div class="filter-tabs reveal">
+      <button class="filter-btn active" data-filter="all" onclick="filterGallery('all')" data-en="All" data-ar="الكل">All</button>
+      <button class="filter-btn" data-filter="marble" onclick="filterGallery('marble')" data-en="Marble & Stone" data-ar="رخام وحجر">Marble &amp; Stone</button>
+      <button class="filter-btn" data-filter="furniture" onclick="filterGallery('furniture')" data-en="Furniture" data-ar="أثاث">Furniture</button>
+      <button class="filter-btn" data-filter="lighting" onclick="filterGallery('lighting')" data-en="Lighting" data-ar="إضاءة">Lighting</button>
+      <button class="filter-btn" data-filter="tiles" onclick="filterGallery('tiles')" data-en="Tiles & Surfaces" data-ar="بلاط وأسطح">Tiles &amp; Surfaces</button>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item wide furniture" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80" alt="Modern Sofa">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Bespoke Furniture" data-ar="أثاث مخصص">Bespoke Furniture</span>
+          <span class="gallery-caption-title" data-en="Modern Italian Sofa" data-ar="أريكة إيطالية حديثة">Modern Italian Sofa</span>
+        </div>
+      </div>
+      <div class="gallery-item furniture" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80" alt="Majlis Seating">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Majlis" data-ar="مجالس">Majlis</span>
+          <span class="gallery-caption-title" data-en="Royal Seating" data-ar="جلسة ملكية">Royal Seating</span>
+        </div>
+      </div>
+      <div class="gallery-item marble" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80" alt="Carrara Marble">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Marble Slab" data-ar="لوح رخام">Marble Slab</span>
+          <span class="gallery-caption-title" data-en="Italian Calacatta" data-ar="كالاكاتا إيطالي">Italian Calacatta</span>
+        </div>
+      </div>
+      <div class="gallery-item wide marble" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1615529328331-f8917597711f?w=1200&q=80" alt="Marble Floor">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Stone Inlay" data-ar="تطعيم الحجر">Stone Inlay</span>
+          <span class="gallery-caption-title" data-en="Waterjet Medallion" data-ar="ميدالية بنفث الماء">Waterjet Medallion</span>
+        </div>
+      </div>
+      <div class="gallery-item lighting" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Crystal Chandelier">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Crystal" data-ar="كريستال">Crystal</span>
+          <span class="gallery-caption-title" data-en="Grand Chandelier" data-ar="ثريا فاخرة">Grand Chandelier</span>
+        </div>
+      </div>
+      <div class="gallery-item tiles" onclick="openLightbox(this)">
+        <img class="gallery-img" loading="lazy" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Premium Tiles">
+        <div class="gallery-caption">
+          <span class="gallery-caption-label" data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</span>
+          <span class="gallery-caption-title" data-en="Large Format" data-ar="مقاس كبير">Large Format</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST ═══ -->
+<section id="trust">
+  <div class="wrap">
+    <div class="trust-row reveal">
+      <div class="trust-cell">
+        <div class="trust-icon">🏛️</div>
+        <div class="trust-num" data-count="200" data-suffix="+">0+</div>
+        <div class="trust-lbl" data-en="Projects Completed" data-ar="مشروع منجز">Projects Completed</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon">⭐</div>
+        <div class="trust-num" data-count="98" data-suffix="%">0%</div>
+        <div class="trust-lbl" data-en="Client Satisfaction" data-ar="رضا العملاء">Client Satisfaction</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon">🌍</div>
+        <div class="trust-num" data-count="3">0</div>
+        <div class="trust-lbl" data-en="Gulf Countries" data-ar="دول خليجية">Gulf Countries</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-icon">📦</div>
+        <div class="trust-num" data-count="1200" data-suffix="+">0+</div>
+        <div class="trust-lbl" data-en="Material Lines" data-ar="خط إنتاج">Material Lines</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <span class="eyebrow" data-en="Get in Touch" data-ar="تواصل معنا">Get in Touch</span>
+      <h2 class="section-head">
+        <span data-en="Request a " data-ar="طلب ">Request a </span>
+        <em data-en="Free Consultation" data-ar="استشارة مجانية">Free Consultation</em>
+      </h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="body-text"
+           data-en="Share your project requirements with our supply team. We will prepare a bespoke material proposal within 24 hours, with no obligation."
+           data-ar="شارك متطلبات مشروعك مع فريق التوريد لدينا. سنُعدّ اقتراح مواد مخصصاً خلال 24 ساعة دون أي التزام.">
+          Share your project requirements with our supply team. We will prepare a bespoke material proposal within 24 hours, with no obligation.
+        </p>
+        <div class="contact-offices">
+          <!-- FIX #5: Phone numbers strictly LTR in both languages -->
+          <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="c-office">
+            <div class="c-flag">🇶🇦</div>
+            <div>
+              <div class="contact-country" data-en="Qatar (HQ)" data-ar="قطر (المقر)">Qatar (HQ)</div>
+              <span class="contact-num">+974 3167 1083</span>
+              <span class="contact-num" style="font-size:13.5px;">+974 3000 3391</span>
+              <div class="contact-note" data-en="WhatsApp · Arabic & English" data-ar="واتساب · عربي وإنجليزي">WhatsApp · Arabic &amp; English</div>
+            </div>
+          </a>
+          <div class="c-office">
+            <div class="c-flag">🇸🇦</div>
+            <div>
+              <div class="contact-country" data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</div>
+              <span class="contact-num">+966 51 046 3440</span>
+              <div class="contact-note" data-en="Riyadh · Jeddah · Al Khobar" data-ar="الرياض · جدة · الخبر">Riyadh · Jeddah · Al Khobar</div>
+            </div>
+          </div>
+          <div class="c-office">
+            <div class="c-flag">🇨🇳</div>
+            <div>
+              <div class="contact-country" data-en="China Supply" data-ar="مكتب التوريد الصيني">China Supply</div>
+              <span class="contact-num">+86 181 0227 8999</span>
+              <div class="contact-note" data-en="Factory Liaison · Quality Control" data-ar="الاتصال بالمصنع · ضبط الجودة">Factory Liaison · Quality Control</div>
+            </div>
+          </div>
+          <div class="c-office">
+            <div class="c-flag">✉️</div>
+            <div>
+              <div class="contact-country" data-en="Email" data-ar="البريد الإلكتروني">Email</div>
+              <span class="contact-num" style="font-size:14px;">info@naqigulf.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-panel reveal reveal-d2">
+        <h3 class="form-panel-title" data-en="Tell Us Your Needs" data-ar="أخبرنا باحتياجاتك">Tell Us Your Needs</h3>
+        <p class="form-sub" data-en="All enquiries handled confidentially" data-ar="جميع الاستفسارات تُعالج بسرية تامة">All enquiries handled confidentially</p>
+        <form id="contact-form" onsubmit="handleFormSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="fg">
+              <label data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
+              <input type="text" name="Full_Name" required
+                     placeholder="Your name"
+                     data-placeholder-en="Your name"
+                     data-placeholder-ar="اسمك الكريم">
+            </div>
+            <div class="fg">
+              <label data-en="Country" data-ar="الدولة">Country</label>
+              <select name="Country">
+                <option value="" disabled selected>— Select —</option>
+                <option data-en="Qatar" data-ar="قطر">Qatar</option>
+                <option data-en="Saudi Arabia" data-ar="السعودية">Saudi Arabia</option>
+                <option data-en="UAE" data-ar="الإمارات">UAE</option>
+                <option data-en="Kuwait" data-ar="الكويت">Kuwait</option>
+                <option data-en="Bahrain" data-ar="البحرين">Bahrain</option>
+                <option data-en="Oman" data-ar="عُمان">Oman</option>
+                <option data-en="Other" data-ar="أخرى">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="fg">
+              <label data-en="WhatsApp *" data-ar="رقم الواتساب *">WhatsApp *</label>
+              <input type="tel" name="WhatsApp" required
+                     placeholder="+974 XXXX XXXX"
+                     data-placeholder-en="+974 XXXX XXXX"
+                     data-placeholder-ar="+974 XXXX XXXX">
+            </div>
+            <div class="fg">
+              <label data-en="Material Interest" data-ar="نوع المادة">Material Interest</label>
+              <select name="Material_Interest">
+                <option value="" disabled selected>— Select —</option>
+                <option data-en="Marble & Stone" data-ar="رخام وحجر">Marble &amp; Stone</option>
+                <option data-en="Furniture" data-ar="أثاث">Furniture</option>
+                <option data-en="Lighting" data-ar="إضاءة">Lighting</option>
+                <option data-en="Tiles & Surfaces" data-ar="بلاط وأسطح">Tiles &amp; Surfaces</option>
+                <option data-en="Full Fit-Out Package" data-ar="حزمة تشطيب كاملة">Full Fit-Out Package</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label data-en="Project Details" data-ar="تفاصيل المشروع">Project Details</label>
+            <textarea name="Details" rows="4"
+                      placeholder="Describe your requirements — quantities, specifications, timeline…"
+                      data-placeholder-en="Describe your requirements — quantities, specifications, timeline…"
+                      data-placeholder-ar="صف متطلباتك — الكميات والمواصفات والجدول الزمني…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark form-btn" id="form-btn">
+            <span id="form-btn-text" data-en="Submit — Response in 24 Hours" data-ar="إرسال — الرد خلال 24 ساعة">Submit — Response in 24 Hours</span>
+          </button>
+        </form>
+        <p class="form-privacy" data-en="🔒 100% confidential · Never shared" data-ar="🔒 سري بنسبة 100% · لن يُشارك أبداً">🔒 100% confidential · Never shared</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER (FIX #5 — full bilingual) ═══ -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="f-brand">
+        <div class="f-brand-name">NAQI GULF</div>
+        <div class="f-brand-sub" data-en="CHINESE TRADING & DECORATION" data-ar="الصيني للتجارة والديكور">CHINESE TRADING &amp; DECORATION</div>
+        <p class="footer-tagline"
+           data-en="Bridging China's finest craftsmanship with Gulf architectural ambition — supplying premium materials across Qatar, Saudi Arabia, and the UAE since 2010."
+           data-ar="نجسر بين أرقى الحرف اليدوية الصينية والطموح المعماري الخليجي — نوفر مواد فاخرة في قطر والمملكة العربية السعودية والإمارات منذ 2010.">
+          Bridging China's finest craftsmanship with Gulf architectural ambition — supplying premium materials across Qatar, Saudi Arabia, and the UAE since 2010.
+        </p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="0.8"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@mrma_omar" target="_blank" rel="noopener" class="f-soc" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+          </a>
+          <a href="https://wa.me/97431671083" target="_blank" rel="noopener" class="f-soc" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.096.543 4.1 1.502 5.849L0 24l6.302-1.649A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- FIX #5: Footer column links fully bilingual -->
+      <div class="f-col">
+        <h5 data-en="Products" data-ar="المنتجات">Products</h5>
+        <ul>
+          <li data-en="Italian Marble" data-ar="رخام إيطالي">Italian Marble</li>
+          <li data-en="Luxury Furniture" data-ar="أثاث فاخر">Luxury Furniture</li>
+          <li data-en="Crystal Lighting" data-ar="إضاءة كريستالية">Crystal Lighting</li>
+          <li data-en="Premium Tiles" data-ar="بلاط فاخر">Premium Tiles</li>
+          <li data-en="Wallcoverings" data-ar="أغطية الجدران">Wallcoverings</li>
+          <li data-en="Custom Fit-Out" data-ar="تشطيب مخصص">Custom Fit-Out</li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <!-- FIX #5: Contact with always-LTR numbers -->
+        <h5 data-en="Contact" data-ar="التواصل">Contact</h5>
+        <div>
+          <div class="f-contact-item">
+            <span class="f-contact-label" data-en="Qatar" data-ar="قطر">Qatar</span>
+            <div>
+              <span class="f-phone">+974 3167 1083</span>
+              <span class="f-phone">+974 3000 3391</span>
+              <span class="f-phone-note" data-en="HQ · WhatsApp preferred" data-ar="المقر الرئيسي · واتساب مفضل">HQ · WhatsApp preferred</span>
+            </div>
+          </div>
+          <div class="f-contact-item">
+            <span class="f-contact-label" data-en="KSA" data-ar="السعودية">KSA</span>
+            <div>
+              <span class="f-phone">+966 51 046 3440</span>
+              <span class="f-phone-note" data-en="Riyadh · Jeddah" data-ar="الرياض · جدة">Riyadh · Jeddah</span>
+            </div>
+          </div>
+          <div class="f-contact-item">
+            <span class="f-contact-label" data-en="China" data-ar="الصين">China</span>
+            <div>
+              <span class="f-phone">+86 181 0227 8999</span>
+              <span class="f-phone-note" data-en="Supply office" data-ar="مكتب التوريد">Supply office</span>
+            </div>
+          </div>
+          <div class="f-contact-item" style="margin-top:4px;">
+            <span class="f-contact-label" data-en="Email" data-ar="بريد">Email</span>
+            <span class="f-phone" style="font-size:12.5px;">info@naqigulf.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FIX #5: Footer copyright bilingual -->
+    <div class="footer-bottom" dir="ltr">
+      <div>
+        <p class="footer-copy">© 2026 NAQI GULF CHINESE TRADING AND DECORATION — All rights reserved.</p>
+        <p class="footer-copy-ar">شركة نقي الخليج الصيني للتجارة والديكور</p>
+      </div>
+      <div style="display:flex;gap:20px;">
+        <span style="font-size:10.5px;color:rgba(255,255,255,0.2);cursor:pointer;" data-en="Privacy" data-ar="الخصوصية">Privacy</span>
+        <span style="font-size:10.5px;color:rgba(255,255,255,0.2);cursor:pointer;" data-en="Terms" data-ar="الشروط">Terms</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ BOTTOM ACTION BAR ═══ -->
+<div id="bottom-bar" role="toolbar">
+  <button class="bar-btn" onclick="scrollToId('gallery')" aria-label="Collections">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    <span class="bar-label" data-en="COLLECTIONS" data-ar="المجموعات">COLLECTIONS</span>
+  </button>
+  <button class="bar-btn" onclick="scrollToId('contact')" aria-label="Get Quote">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span class="bar-label" data-en="GET A QUOTE" data-ar="طلب عرض سعر">GET A QUOTE</span>
+  </button>
+  <a href="https://wa.me/97431671083?text=Hello%20NAQI%20Gulf"
+     target="_blank" rel="noopener" class="bar-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.096.543 4.1 1.502 5.849L0 24l6.302-1.649A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" fill="currentColor"/></svg>
+    <span class="bar-label" data-en="WHATSAPP" data-ar="واتساب">WHATSAPP</span>
+  </a>
+</div>
+
+<script>
+'use strict';
+let lang = 'en';
+
+/* ─── FIX #7: Complete bilingual setLang ─── */
+function setLang(l) {
+  lang = l;
+  const isAr = l === 'ar';
+  document.body.classList.toggle('ar', isAr);
+  document.documentElement.setAttribute('lang', l);
+  document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+
+  /* Update all [data-en]/[data-ar] elements */
+  document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + l);
+  });
+  /* Update select option text */
+  document.querySelectorAll('option[data-en][data-ar]').forEach(el => {
+    el.textContent = el.getAttribute('data-' + l);
+  });
+  /* Update placeholders */
+  document.querySelectorAll('[data-placeholder-en],[data-placeholder-ar]').forEach(el => {
+    const ph = el.getAttribute('data-placeholder-' + l);
+    if (ph) el.setAttribute('placeholder', ph);
+  });
+  /* Toggle active on all lang buttons */
+  ['nl-en','nl-ar','ml-en','ml-ar'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', id.endsWith(l));
+  });
+
+  /* FIX #5: Phone numbers — always keep LTR even in Arabic mode */
+  document.querySelectorAll('.contact-num, .f-phone').forEach(el => {
+    el.setAttribute('dir', 'ltr');
+  });
+}
+
+/* ─── Menu ─── */
+const menuOverlay = document.getElementById('menu-overlay');
+const navBurger   = document.getElementById('nav-burger');
+let menuOpen = false;
+
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  menuOverlay.classList.toggle('open', menuOpen);
+  navBurger.classList.toggle('open', menuOpen);
+  navBurger.setAttribute('aria-expanded', String(menuOpen));
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  menuOpen = false;
+  menuOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+function toggleMobMenu(el) {
+  const parent = el.parentElement;
+  const was = parent.classList.contains('active');
+  document.querySelectorAll('.mob-nav-item').forEach(i => i.classList.remove('active'));
+  if (!was) parent.classList.add('active');
+}
+
+/* Close overlay on ESC */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+menuOverlay.addEventListener('click', e => { if (e.target === menuOverlay) closeMenu(); });
+
+/* ─── Smooth scroll ─── */
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) { e.preventDefault(); scrollToId(id); }
+  });
+});
+
+/* ─── FIX #1: Navbar scroll state ─── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 70);
+}, { passive: true });
+
+/* ─── Gallery filter ─── */
+function filterGallery(cat) {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === cat);
+  });
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.classList.toggle('hide', cat !== 'all' && !item.classList.contains(cat));
+  });
+}
+
+/* ─── Lightbox ─── */
+function openLightbox(el) {
+  document.getElementById('lightbox-img').src = el.querySelector('img').src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ─── Scroll reveal ─── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ─── Counter animation ─── */
+function animateCount(el) {
+  const target = parseInt(el.getAttribute('data-count'));
+  const suffix = el.getAttribute('data-suffix') || '';
+  let cur = 0;
+  const inc = target / (1200 / 14);
+  const t = setInterval(() => {
+    cur = Math.min(cur + inc, target);
+    el.textContent = (target >= 1000 ? Math.floor(cur).toLocaleString() : Math.floor(cur)) + suffix;
+    if (cur >= target) clearInterval(t);
+  }, 14);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(animateCount);
+      cntObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+['intro','trust'].forEach(id => {
+  const s = document.getElementById(id);
+  if (s) cntObs.observe(s);
+});
+
+/* ─── Form ─── */
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('form-btn');
+  const txt  = document.getElementById('form-btn-text');
+  const orig = txt.textContent;
+
+  if (!form.Full_Name.value.trim() || !form.WhatsApp.value.trim()) {
+    txt.textContent = lang === 'ar' ? '⚠ يرجى ملء الحقول المطلوبة' : '⚠ Please fill required fields';
+    btn.style.background = '#c0392b';
+    setTimeout(() => { txt.textContent = orig; btn.style.background = ''; }, 3000);
+    return;
+  }
+  txt.textContent = lang === 'ar' ? '⏳ جاري الإرسال…' : '⏳ Sending…';
+  btn.disabled = true; btn.style.opacity = '0.7';
+  try {
+    const res = await fetch('https://formspree.io/f/xzdkdapw', {
+      method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.style.background = '#25D366';
+      txt.textContent = lang === 'ar' ? '✓ تم الإرسال — نتواصل خلال 24 ساعة' : '✓ Sent! We\'ll reply within 24 hours';
+      form.reset();
+    } else throw new Error();
+  } catch {
+    btn.style.background = '#c0392b';
+    txt.textContent = lang === 'ar' ? '❌ خطأ — تواصل عبر الواتساب' : '❌ Error — please WhatsApp us';
+  }
+  btn.disabled = false; btn.style.opacity = '';
+  setTimeout(() => { txt.textContent = orig; btn.style.background = ''; }, 6000);
+}
+
+/* ─── FIX #1: Video fallback ─── */
+(function() {
+  const video = document.getElementById('hero-video');
+  const fallback = document.getElementById('hero-fallback');
+  if (video) {
+    video.addEventListener('error', () => {
+      video.style.display = 'none';
+      if (fallback) fallback.style.display = 'block';
+    });
+    /* If video has no valid source, show fallback */
+    video.addEventListener('loadeddata', () => {
+      if (fallback) fallback.style.display = 'none';
+    });
+    /* Attempt autoplay */
+    video.muted = true;
+    video.play().catch(() => {
+      /* autoplay blocked — video still shows poster image */
+    });
+  }
+})();
+
+/* ─── Reduced motion ─── */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.svc-img, .gallery-img').forEach(el => el.style.transition = 'none');
+}
+</script>
+</body>
+</html>
