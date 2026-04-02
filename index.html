@@ -104,19 +104,32 @@ section#contact nav,
    问题 1 修复：手机端视频严格遵循 16:9 比例，无黑边、无过度裁切
    ============================================================ */
 @media (max-width: 768px) {
-    #hero { height: auto !important; aspect-ratio: 16/9 !important; width: 100vw; margin-top: 70px !important; }
+    #hero { 
+        height: auto !important; 
+        aspect-ratio: 16 / 9 !important; 
+        width: 100vw !important; 
+        margin-top: 70px !important; 
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+    }
     #hero video {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 完美覆盖，绝无黑边 */
+        object-fit: cover !important;
     }
     #hero h1 {
-        font-size: 28px !important; /* 文字缩小以适应 16:9 的紧凑空间 */
+        font-size: 28px !important;
         margin-top: 0 !important;
+        position: relative;
+        z-index: 2;
     }
+}
     #hero p {
         font-size: 10px !important;
     }
