@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NAQI Gulf – Premium Building Materials & Furniture Supply</title>
     
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <meta name="theme-color" content="#0a0a0a">
+
     <style>
         :root { --gold: #C5A059; --ink: #0a0a0a; --cream: #f9f9f9; --font-d: 'Georgia', serif; }
         body { margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; background: #fff; overflow-x: hidden; scroll-behavior: smooth; }
@@ -14,9 +18,9 @@
         /* 阿拉伯语防断字护盾 */
         [dir="rtl"] * { letter-spacing: normal !important; }
 
-        /* --- 1. 导航栏：黑金磨砂半透明 --- */
-        #nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-inner { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 15px 0; height: 40px; }
+        /* --- 导航栏：黑金磨砂玻璃质感 --- */
+        #nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.15); }
+        .nav-inner { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
         .nav-brand { cursor: pointer; border: 1px solid rgba(197, 160, 89, 0.4); padding: 5px 15px; transition: 0.3s; }
         .brand-name { font-family: var(--font-d); font-size: 20px; font-weight: bold; letter-spacing: 3px; color: #fff; }
         
@@ -34,58 +38,49 @@
         .lang-group button { background: none; border: none; cursor: pointer; font-weight: bold; font-size: 14px; padding: 5px 10px; color: #fff; }
         .mobile-toggle { display: none; font-size: 24px; cursor: pointer; color: #fff; background: none; border: none; }
 
-        /* --- 2. 视频模块 (16:9 且不被遮挡) --- */
-        #hero { position: relative; width: 100%; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top: 70px; }
-        #hero-container { position: relative; width: 100%; aspect-ratio: 16 / 9; }
-        #hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-
-        /* --- 3. 手机端适配 --- */
-        @media (max-width: 900px) {
-            #nav { height: 60px; }
-            .nav-inner { height: 100%; }
-            .nav-brand { position: absolute; left: 50%; transform: translateX(-50%); z-index: 10; }
-            .mobile-toggle { display: block; z-index: 11; }
-            .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: rgba(10,10,10,0.98); flex-direction: column; padding: 20px 0; }
-            .nav-links.active { display: flex; }
-            .nav-item { width: 100%; text-align: center; }
-            .dropdown-menu { position: static; display: none; background: #1a1a1a; }
-            .nav-item:active .dropdown-menu { display: block; }
-
-            #hero { margin-top: 60px !important; }
-            #hero-container { width: 100vw !important; aspect-ratio: 16 / 9 !important; }
-            
-            #side-rail { display: none; }
-            .services-grid { flex-direction: column; }
-            #footer { text-align: center; }
-            .footer-grid > div { align-items: center !important; }
-        }
-
-        /* --- 4. 侧边栏图标 --- */
+        /* --- 侧边栏：四大图标复活 --- */
         #side-rail { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; flex-direction: column; gap: 10px; }
-        #side-rail a { width: 44px; height: 44px; border-radius: 5px; display: flex; align-items: center; justify-content: center; background: rgba(20, 20, 20, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold); transition: 0.3s; }
-        #side-rail a:hover { border-color: #fff; transform: translateX(-3px); }
+        #side-rail a { width: 44px; height: 44px; border-radius: 5px; display: flex; align-items: center; justify-content: center; background: rgba(20, 20, 20, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold); transition: all 0.3s ease; }
+        #side-rail a:hover { background: rgba(197, 160, 89, 0.15); border-color: var(--gold); transform: translateX(-3px); color: #fff; }
         #side-rail svg { width: 20px; height: 20px; fill: currentColor; }
 
-        /* --- 5. 业务与画廊 --- */
-        #intro { padding: 120px 20px; background: #0a0a0a; text-align: center; }
+        /* --- 视频模块：恢复稳定比例 --- */
+        #hero { position: relative; height: 100vh; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top: 60px; }
+        #hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+
+        /* --- 业务模块 --- */
         #services { background: var(--cream); padding: 100px 0; }
         .services-grid { display: flex; gap: 40px; }
-        .service-block { flex: 1; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.05); overflow: hidden; }
+        .service-block { flex: 1; background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.05); display: flex; flex-direction: column; overflow: hidden; }
         .service-img-wrap { width: 100%; height: 380px; }
         .service-img { width: 100%; height: 100%; object-fit: cover; }
-        .service-text { padding: 40px; }
+        .service-text { padding: 40px; text-align: left; }
         [dir="rtl"] .service-text { text-align: right; }
 
+        /* --- 画廊模块复活 --- */
         #gallery { padding: 100px 0; background: #fff; text-align: center; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
-        .gallery-item { height: 350px; overflow: hidden; background: #f0f0f0; }
+        .gallery-item { height: 350px; overflow: hidden; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 
-        /* --- 6. 页脚 --- */
-        #footer { background-color: var(--ink); color: #8A8A8A; padding: 80px 0 30px; }
+        /* --- 页脚：多国电话复活 --- */
+        #footer { background-color: var(--ink); color: #8A8A8A; padding: 80px 0 30px; font-size: 14px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
-        .phone-link { color: #ddd; text-decoration: none; transition: 0.3s; }
+        .phone-link { color: #ddd; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .phone-link:hover { color: var(--gold) !important; }
+
+        /* 手机端完美适配 */
+        @media (max-width: 900px) {
+            .nav-brand { position: absolute; left: 50%; transform: translateX(-50%); }
+            .mobile-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(10,10,10,0.95); flex-direction: column; padding: 20px 0; }
+            .nav-links.active { display: flex; }
+            #hero { height: auto !important; aspect-ratio: 16/9 !important; width: 100vw; margin-top: 60px; }
+            .services-grid { flex-direction: column; }
+            #footer { text-align: center; }
+            .footer-grid > div { align-items: center !important; display: flex; flex-direction: column; }
+            #side-rail { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -93,9 +88,7 @@
     <nav id="nav">
         <div class="wrap nav-inner">
             <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
-            <div class="nav-brand" onclick="window.scrollTo(0,0)">
-                <div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div>
-            </div>
+            <div class="nav-brand" onclick="window.scrollTo(0,0)"><div class="brand-name" data-en="NAQI GULF" data-ar="نقي الخليج">NAQI GULF</div></div>
             <ul class="nav-links" id="mobile-menu">
                 <li class="nav-item">
                     <span class="main-link" data-en="Materials" data-ar="مواد البناء">Materials</span>
@@ -112,22 +105,16 @@
                         <a href="#gallery" class="dropdown-item" data-en="Lighting & Decor" data-ar="إضاءة وديكور">Lighting & Decor</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="#intro" class="main-link" data-en="About" data-ar="من نحن">About</a></li>
+                <li class="nav-item"><a href="#intro" class="main-link" data-en="About" data-ar="من نحن">About Us</a></li>
                 <li class="nav-item"><a href="#footer" class="main-link" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
             </ul>
-            <div class="lang-group">
-                <button onclick="setLang('en')">EN</button> | <button onclick="setLang('ar')">AR</button>
-            </div>
+            <div class="lang-group"><button onclick="setLang('en')">EN</button> | <button onclick="setLang('ar')">AR</button></div>
         </div>
     </nav>
 
-    <section id="hero">
-        <div id="hero-container">
-            <video autoplay muted loop playsinline><source src="hero-bg.mp4" type="video/mp4"></video>
-        </div>
-    </section>
+    <section id="hero"><video autoplay muted loop playsinline><source src="hero-bg.mp4" type="video/mp4"></video></section>
 
-    <section id="intro">
+    <section id="intro" style="padding: 120px 20px; background: #0a0a0a; text-align: center;">
         <div class="wrap">
             <h2 style="color: #fff; font-size: 42px;" data-en="The Gulf's Direct Link to <span style='color: #C5A059;'>China's Finest</span>" data-ar="بوابتك المباشرة نحو <span style='color: #C5A059;'>الفخامة الصينية</span>">The Gulf's Direct Link to China's Finest</h2>
             <p style="color: #888; max-width: 800px; margin: 20px auto; line-height: 1.9;" data-en="Connecting projects with China's premium manufacturers." data-ar="نربط أضخم المشاريع بنخبة المصنعين في الصين.">Connecting projects with China's premium manufacturers.</p>
@@ -170,15 +157,14 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center; border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; font-size: 12px; color: #666;">
-            © 2026 NAQI GULF CHINESE TRADING — شركة نقي الخليج
-        </div>
+        <div style="text-align: center; border-top: 1px solid #222; margin-top: 60px; padding-top: 30px; font-size: 12px; color: #666;">© 2026 NAQI GULF</div>
     </footer>
 
     <div id="side-rail">
         <a href="mailto:info@naqigulf.com"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         <a href="https://wa.me/97431671083" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg></a>
-        <a href="https://www.tiktok.com/@mrma_omar" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg></a>
+        <a href="https://www.tiktok.com/@mrma_omar" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 0 006.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg></a>
+        <a href="https://www.instagram.com/naqi_gulf_china_trading" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
     </div>
 
     <script>
